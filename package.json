@@ -8,6 +8,7 @@
     "build:css": "sass style.scss style.css --no-source-map --style=expanded && sass framework/scss/editor-styles.scss framework/css/editor-styles.css --no-source-map --style=expanded",
     "build:js": "terser framework/js/script.js -o framework/js/script.min.js --compress --mangle && terser framework/js/plugins.js -o framework/js/plugins.min.js --compress --mangle",
     "build": "npm-run-all build:css build:js",
+    "build:dist": "npm run build && node scripts/build-dist.js",
     "watch:css": "chokidar '**/*.scss' -c 'npm run build:css'",
     "watch:js": "chokidar 'framework/js/script.js' 'framework/js/plugins.js' -c 'npm run build:js'",
     "watch": "npm-run-all --parallel watch:css watch:js",

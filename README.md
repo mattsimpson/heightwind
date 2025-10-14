@@ -23,21 +23,11 @@ In addition to your sidebar you can add widgets the three defined regions in the
 ## Responsive
 HeightWind has been fully optimised for small screen display. Your content will look beautiful whether it's viewed on a desktop, a tablet or a smartphone.
 
-## Theme Hook Alliance
-HeightWind fully supports the [Theme Hook Alliance](https://github.com/zamoose/themehookalliance).
-
 ## Theme Options
 Just enough options to make your site unique. There are options to change colors, layout and header / background images.
 
-## Typography
-All aspects of typography are set up in accordance to a Modular Scale ensuring consistent typographical hierarchy.
-
-## Documentation
-Ever evolving documentation available in the [wiki](https://github.com/jameskoster/highwind/wiki).
-
 ## WooCommerce Integration
 Use HeightWind to create an online store using [WooCommerce](http://woothemes.com/woocommerce).
-
 
 # Usage
 
@@ -117,6 +107,46 @@ Automatically rebuilds CSS and JavaScript when source files change.
 - `framework/js/script.js` - Main theme JavaScript
 - `framework/js/plugins.js` - jQuery plugins
 
-# Misc
+## Production Deployment
 
-* [Modular Scale](http://modularscale.com/scale/?px1=16&px2=18&ra1=1.333&ra2=0)
+### Creating a Production Build
+
+To create a production-ready ZIP file for deployment:
+
+```bash
+npm run build:dist
+```
+
+This command will:
+1. Compile all CSS and JavaScript files
+2. Create a `dist/` folder with only production files (no node_modules, .git, development files)
+3. Generate a `heightwind-2.0.0.zip` file ready for deployment
+
+### Installing on WordPress
+
+**Option 1: Upload ZIP via WordPress Admin**
+1. Run `npm run build:dist`
+2. Go to WordPress Admin > Appearance > Themes > Add New > Upload Theme
+3. Upload the generated `heightwind-2.0.0.zip` file
+4. Activate the theme
+
+**Option 2: Manual Installation**
+1. Run `npm run build:dist`
+2. Extract `heightwind-2.0.0.zip`
+3. Upload the `heightwind/` folder to your WordPress site's `wp-content/themes/` directory
+4. Activate via WordPress Admin > Appearance > Themes
+
+**Option 3: Direct Git Clone (Development Only)**
+
+⚠️ **Not recommended for production sites** - includes 31MB of development dependencies.
+
+For development/testing only, you can clone directly:
+```bash
+cd wp-content/themes/
+git clone <repository-url> heightwind
+cd heightwind
+npm install
+npm run build
+```
+
+Then activate the theme in WordPress. This approach is only suitable for development environments where you need access to the build tools.

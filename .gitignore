@@ -43,6 +43,10 @@ Desktop.ini
 # Sass cache
 .sass-cache/
 
+# Distribution files
+dist/
+*.zip
+
 # MacOS
 .AppleDouble
 .LSOverride
