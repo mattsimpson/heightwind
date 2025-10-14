@@ -1,0 +1,255 @@
+/**
+ * Block Editor Styles
+ * Styles for the WordPress block editor (Gutenberg)
+ * @package heightwind
+ */
+
+/* Editor Wrapper Styles */
+.editor-styles-wrapper {
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
+	color: #333;
+}
+
+/* Typography */
+.editor-styles-wrapper p {
+	margin-top: 0;
+	margin-bottom: 1.5rem;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+	font-weight: 600;
+	line-height: 1.3;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+.editor-styles-wrapper h1 {
+	font-size: 2.369rem;
+	line-height: 1.2;
+}
+
+.editor-styles-wrapper h2 {
+	font-size: 1.777rem;
+	line-height: 1.3;
+}
+
+.editor-styles-wrapper h3 {
+	font-size: 1.333rem;
+}
+
+.editor-styles-wrapper h4 {
+	font-size: 1rem;
+}
+
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+	font-size: 0.889rem;
+}
+
+/* Links */
+.editor-styles-wrapper a {
+	color: #0073aa;
+	text-decoration: none;
+}
+
+.editor-styles-wrapper a:hover {
+	color: #333;
+	text-decoration: underline;
+}
+
+/* Lists */
+.editor-styles-wrapper ul,
+.editor-styles-wrapper ol {
+	padding-left: 1.5em;
+	margin-bottom: 1.5rem;
+}
+
+.editor-styles-wrapper li {
+	margin-bottom: 0.5rem;
+}
+
+/* Blockquotes */
+.editor-styles-wrapper blockquote {
+	margin: 1.5rem 0;
+	padding: 1rem 1.5rem;
+	border-left: 4px solid #0073aa;
+	font-style: italic;
+	background: #f7f7f7;
+}
+
+.editor-styles-wrapper blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* Code */
+.editor-styles-wrapper code,
+.editor-styles-wrapper kbd,
+.editor-styles-wrapper pre {
+	font-family: "Courier New", Courier, monospace;
+	background: #f7f7f7;
+	border: 1px solid #e1e1e1;
+	border-radius: 3px;
+}
+
+.editor-styles-wrapper code,
+.editor-styles-wrapper kbd {
+	padding: 0.125rem 0.25rem;
+	font-size: 0.875em;
+}
+
+.editor-styles-wrapper pre {
+	padding: 1rem;
+	overflow-x: auto;
+	white-space: pre;
+}
+
+.editor-styles-wrapper pre code {
+	border: none;
+	background: transparent;
+	padding: 0;
+}
+
+/* Images */
+.editor-styles-wrapper img {
+	max-width: 100%;
+	height: auto;
+}
+
+.editor-styles-wrapper figure {
+	margin: 1.5rem 0;
+}
+
+.editor-styles-wrapper figcaption {
+	font-size: 0.875rem;
+	color: #666;
+	margin-top: 0.5rem;
+	text-align: center;
+}
+
+/* Tables */
+.editor-styles-wrapper table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1.5rem;
+}
+
+.editor-styles-wrapper th,
+.editor-styles-wrapper td {
+	padding: 0.75rem;
+	border: 1px solid #e1e1e1;
+	text-align: left;
+}
+
+.editor-styles-wrapper th {
+	background: #f7f7f7;
+	font-weight: 600;
+}
+
+/* Separator */
+.editor-styles-wrapper hr {
+	border: none;
+	border-top: 1px solid #e1e1e1;
+	margin: 2rem 0;
+}
+
+/* Buttons */
+.editor-styles-wrapper .wp-block-button__link {
+	background-color: #0073aa;
+	color: #fff;
+	padding: 0.75rem 1.5rem;
+	text-decoration: none;
+	border-radius: 3px;
+	display: inline-block;
+	transition: background-color 0.2s ease;
+}
+
+.editor-styles-wrapper .wp-block-button__link:hover {
+	background-color: #005177;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Alignments */
+.editor-styles-wrapper .alignleft {
+	float: left;
+	margin-right: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.editor-styles-wrapper .alignright {
+	float: right;
+	margin-left: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.editor-styles-wrapper .aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+/* Wide and Full Alignments */
+.editor-styles-wrapper .alignwide {
+	max-width: 1400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.editor-styles-wrapper .alignfull {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Pull Quote */
+.editor-styles-wrapper .wp-block-pullquote {
+	padding: 2rem;
+	border-top: 4px solid #0073aa;
+	border-bottom: 4px solid #0073aa;
+}
+
+.editor-styles-wrapper .wp-block-pullquote blockquote {
+	border-left: none;
+	background: transparent;
+	font-size: 1.333rem;
+	padding: 0;
+}
+
+/* Cover Block */
+.editor-styles-wrapper .wp-block-cover {
+	min-height: 400px;
+}
+
+/* Group Block */
+.editor-styles-wrapper .wp-block-group {
+	padding: 1.5rem;
+}
+
+/* Columns */
+.editor-styles-wrapper .wp-block-columns {
+	margin-bottom: 1.5rem;
+}
+
+/* Accessibility: Skip to content link focus styles */
+.editor-styles-wrapper a:focus {
+	outline: 2px solid #0073aa;
+	outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+	.editor-styles-wrapper * {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

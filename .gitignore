@@ -1,0 +1,58 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.buildpath
+
+# Temporary Files
+*.log
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# Build artifacts (uncomment if you want to ignore compiled CSS)
+# Note: For WordPress themes, compiled CSS is usually tracked in git
+# because end users need it and won't run build processes
+# style.css
+# accessibility.css
+# framework/css/editor-styles.css
+# block-editor-style.css
+
+# Sass cache
+.sass-cache/
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+[Tt]humbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*

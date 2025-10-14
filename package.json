@@ -1,0 +1,28 @@
+{
+  "name": "heightwind",
+  "version": "2.0.0",
+  "description": "HeightWind - A refreshingly simple WordPress theme.",
+  "author": "Matt Simpson",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build:css": "sass style.scss style.css --no-source-map --style=expanded && sass framework/scss/editor-styles.scss framework/css/editor-styles.css --no-source-map --style=expanded",
+    "build:js": "terser framework/js/script.js -o framework/js/script.min.js --compress --mangle && terser framework/js/plugins.js -o framework/js/plugins.min.js --compress --mangle",
+    "build": "npm-run-all build:css build:js",
+    "watch:css": "chokidar '**/*.scss' -c 'npm run build:css'",
+    "watch:js": "chokidar 'framework/js/script.js' 'framework/js/plugins.js' -c 'npm run build:js'",
+    "watch": "npm-run-all --parallel watch:css watch:js",
+    "dev": "npm run watch"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0",
+    "terser": "^5.31.0",
+    "npm-run-all": "^4.1.5",
+    "chokidar-cli": "^3.0.0"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "responsive",
+    "typography"
+  ]
+}

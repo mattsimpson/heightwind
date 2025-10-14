@@ -1,0 +1,323 @@
+/**
+ * Accessibility Styles
+ * Modern accessibility features for HeightWind theme
+ * @package heightwind
+ * @since 2.0.0
+ */
+
+/* ==========================================================================
+   Skip to Content Link
+   ========================================================================== */
+
+.skip-link.screen-reader-text {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+	word-wrap: normal;
+	border: 0;
+	padding: 0;
+	margin: -1px;
+}
+
+.skip-link.screen-reader-text:focus {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: auto;
+	z-index: 999999;
+	display: block;
+	width: auto;
+	height: auto;
+	clip: auto;
+	clip-path: none;
+	padding: 1rem 1.5rem;
+	background-color: #0073aa;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 600;
+	text-decoration: none;
+	line-height: 1.4;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	overflow: visible;
+	white-space: normal;
+}
+
+.skip-link.screen-reader-text:hover {
+	background-color: #005177;
+	color: #fff;
+}
+
+/* ==========================================================================
+   Screen Reader Text
+   ========================================================================== */
+
+.screen-reader-text {
+	position: absolute;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+	word-wrap: normal;
+	border: 0;
+	padding: 0;
+	margin: -1px;
+}
+
+.screen-reader-text:focus {
+	position: static;
+	width: auto;
+	height: auto;
+	clip: auto;
+	clip-path: none;
+	overflow: visible;
+	white-space: normal;
+}
+
+/* ==========================================================================
+   Focus Styles
+   ========================================================================== */
+
+a:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+	outline: 2px solid #0073aa;
+	outline-offset: 2px;
+}
+
+/* High contrast focus for better visibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+	outline: 3px solid #0073aa;
+	outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Video Embeds - Responsive
+   ========================================================================== */
+
+/* Modern CSS aspect-ratio support for responsive videos */
+.wp-block-embed,
+.wp-block-embed__wrapper,
+iframe[src*="youtube"],
+iframe[src*="vimeo"],
+iframe[src*="youtu.be"],
+.embed-container {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	width: 100%;
+	height: auto;
+}
+
+/* Fallback for older browsers */
+@supports not (aspect-ratio: 16 / 9) {
+	.wp-block-embed,
+	.wp-block-embed__wrapper,
+	.embed-container {
+		position: relative;
+		padding-bottom: 56.25%; /* 16:9 ratio */
+		height: 0;
+		overflow: hidden;
+	}
+
+	.wp-block-embed iframe,
+	.wp-block-embed__wrapper iframe,
+	.embed-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	/* Disable smooth scrolling */
+	html {
+		scroll-behavior: auto !important;
+	}
+
+	/* Disable parallax and other motion effects */
+	.parallax {
+		background-attachment: scroll !important;
+	}
+}
+
+/* ==========================================================================
+   High Contrast Mode Support
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+	a:focus,
+	button:focus,
+	input:focus,
+	select:focus,
+	textarea:focus {
+		outline-width: 3px;
+		outline-offset: 3px;
+	}
+
+	/* Ensure sufficient contrast for text */
+	body {
+		background: #fff;
+		color: #000;
+	}
+
+	a {
+		text-decoration: underline;
+	}
+}
+
+/* ==========================================================================
+   Accessible Tables
+   ========================================================================== */
+
+table caption {
+	caption-side: top;
+	text-align: left;
+	font-weight: 600;
+	padding-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   Accessible Images
+   ========================================================================== */
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Images without alt text warning (for development) */
+img:not([alt]) {
+	outline: 3px solid red;
+	outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Color Contrast Improvements
+   ========================================================================== */
+
+/* Ensure links have sufficient contrast */
+a {
+	text-decoration-skip-ink: auto;
+}
+
+/* Improved button contrast */
+.button,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+	min-width: 44px;
+}
+
+/* ==========================================================================
+   Text Spacing
+   ========================================================================== */
+
+/* Support for user-set text spacing preferences */
+* {
+	line-height: 1.5;
+}
+
+p {
+	margin-bottom: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 1.5em;
+	margin-bottom: 0.75em;
+	line-height: 1.3;
+}
+
+/* ==========================================================================
+   Dark Mode Support (Optional)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+	/* Users can uncomment and customize these styles for dark mode support */
+	/*
+	:root {
+		--background: #1a1a1a;
+		--foreground: #f0f0f0;
+		--accent: #4a9eff;
+	}
+
+	body {
+		background-color: var(--background);
+		color: var(--foreground);
+	}
+
+	a {
+		color: var(--accent);
+	}
+	*/
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+	/* Hide non-essential elements when printing */
+	.skip-link,
+	.nav-toggle,
+	.back-to-top,
+	nav,
+	.sidebar,
+	.comments,
+	.advertisement {
+		display: none !important;
+	}
+
+	/* Ensure good contrast for printing */
+	body {
+		background: white;
+		color: black;
+	}
+
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+
+	/* Expand abbreviations */
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+}

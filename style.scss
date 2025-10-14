@@ -1,0 +1,928 @@
+/*
+Theme Name: HeightWind
+Theme URI: https://mattsimpson.ca
+Description: HeightWind is a lightweight, free WordPress theme designed to showcase content. It features a clean, responsive design with a strong focus on typography, plus a bunch of presentational options and widgetised regions allowing you to give your site a unique touch. Based on the original HighWind theme by James Koster.
+Author: Matt Simpson
+Author URI: https://mattsimpson.ca
+Version: 2.0.0
+Text Domain: heightwind
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 7.4
+Tags: white, two-columns, left-sidebar, right-sidebar, sticky-post, threaded-comments, translation-ready, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, theme-options, light
+
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+FontAwesome 7 Free License: SIL OFL 1.1 for fonts, MIT for CSS, CC BY 4.0 for icons - https://fontawesome.com/license/free
+
+HeightWind WordPress Theme, Copyright 2025 Matt Simpson
+Based on HighWind by James Koster, Copyright 2013
+HeightWind is distributed under the terms of the GNU GPL
+*/
+
+/**
+ * STYLE.SCSS
+ * This file contains presenational styles for this theme
+ */
+
+
+/**
+ * Imports
+ */
+@use 'sass:color';
+@use 'framework/scss/mixins' as *;
+@use 'framework/scss/normalize';
+@use 'framework/scss/grid' as *;
+@use 'framework/scss/core';
+
+
+/**
+ * Style
+ */
+html {
+	font-family: $fontstack_sans;
+	font-weight: 400;
+}
+
+body {
+	line-height: 1.5em;
+	color: $color_body;
+	background: $color_bg;
+	font-size:1em;
+}
+
+
+/**
+ * Wrappers
+ */
+.inner-wrap {
+	padding: 0 1.125em;
+	background-color: $color_bg;
+}
+
+
+/**
+ * Typography
+ */
+h1, h2, h3, h4, h5, h6, .heading, .omega, .psi, .alpha, .beta, .gamma, .delta {
+	font-weight: 400;
+	margin:0;
+	margin-bottom:1rem;
+	color: #444854;
+	line-height: 1.333;
+	position: relative;
+	text-align: left;
+	small {
+		@include opacity(0.8);
+	}
+	a {
+		text-decoration: none;
+	}
+}
+
+.omega {
+	font-size:4.209em;
+	letter-spacing: -2px;
+	font-weight: 300;
+}
+
+.psi {
+	font-size:2.665em;
+	letter-spacing: -1px;
+	font-weight: 300;
+}
+
+h1, .site-title, .alpha {
+	display:block;
+	font-size:1.777em;
+	letter-spacing: -1px;
+	&.archive-header {
+		font-size:1.125em;
+	}
+}
+
+h2, .beta {
+	font-size:1.5em;
+}
+
+h3, .gamma {
+	font-size:1.333em;
+	font-weight: 600;
+}
+
+h4, .delta {
+	font-size:1.125em;
+	font-weight: 600;
+}
+
+h5, h6 {
+	font-size: 1em;
+	font-weight: 700;
+}
+
+p + h1, p + h2, p + h3, p + h4 {
+	padding-top:0;
+}
+
+p, ul, ol, dl, blockquote, pre, table, fieldset, article, article footer, nav, form, .wp-post-image {
+	margin: 0 0 1.777em 0;
+}
+
+ul, ol {
+	ul, ol {
+		margin:0 0 0 1.777em;
+	}
+}
+
+dd {
+	margin-left:1.777em;
+}
+
+mark {
+	background: none;
+	@include opacity(0.5);
+}
+
+p {
+	-webkit-hyphens : auto;
+	-webkit-hyphenate-character : "\2010";
+	-webkit-hyphenate-limit-after : 1;
+	-webkit-hyphenate-limit-before : 3;
+	-moz-hyphens : manual;
+	orphans : 3;
+	widows : 3;
+}
+
+small, .small {
+	font-size:0.844em;
+	line-height: 1.75em;
+}
+
+strong, dt {
+	font-weight: 600;
+}
+
+acronym, abbr[title] {
+	cursor: help;
+	font-variant: small-caps;
+	font-weight: 600;
+	border:none;
+}
+
+ins {
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	text-decoration: none;
+}
+
+blockquote {
+	@include opacity(0.8);
+	padding-left:1.777em;
+	p:last-child {
+		margin-bottom:0;
+	}
+
+	cite {
+		@extend .small;
+		text-transform: uppercase;
+		font-style: normal;
+		letter-spacing: 1px;
+		font-size:.844em;
+		display: block;
+	}
+
+	p + p cite, p + cite {
+		margin-top:-1.777em;
+	}
+
+	&:before {
+		content: "\201C";
+		text-indent: -.563em;
+		float: left;
+		font-size:3.157em;
+		font-family:"Font Awesome 7 Free";
+		font-weight: 900;
+		line-height: 1;
+	}
+}
+
+code, pre {
+	background: rgba(0,0,0,0.05);
+	padding:0.1em 0.201em;
+	@include border_radius(0.201em);
+	color: #dc5494;
+	margin:0 .201em;
+	padding:0 .201em;
+	border:1px solid rgba(0,0,0,0.1);
+	font-weight: 600;
+}
+
+pre {
+	padding:.633em;
+	margin-bottom:1.777em;
+	code {
+		background: none;
+		border:0;
+	}
+}
+
+span.ampersand {
+	font-family: Baskerville, Palatino, "Book Antiqua", serif;
+	font-style: italic;
+}
+
+ul,
+ol {
+	padding: 0 1.1em;
+}
+
+li {
+	padding-bottom: 0.5em;
+	padding-left: 0.3em;
+}
+
+ul > li:last-child,
+ol > li:last-child {
+	padding-bottom: 0;
+}
+
+/**
+ * Anchors
+ */
+a {
+	color: $color_theme;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+a.more-link {
+	font-weight: 700;
+}
+
+
+/**
+ * Forms
+ */
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input.input-text, textarea {
+	padding:.844em;
+	background: rgba(0,0,0,0.05);
+	color: $color_body;
+	border:0;
+	@include border_radius;
+	outline: none;
+	@include borderbox;
+}
+textarea {
+	padding:1em;
+}
+input[type="radio"] {
+    -webkit-appearance:none;  /* Hides the default radio style */
+    height:1.5em;
+    width:1.5em;
+    @include borderbox;
+    font-size: .844em;
+    border:.422em solid $color_body;
+    background: $color_body;
+    cursor:pointer;
+    position:relative;
+    @include border_radius(100%);
+    @include borderbox;
+    margin-right:1em;
+    float: left;
+    @include transition;
+}
+
+input[type="radio"]:checked {
+    background:none;
+}
+input[type="checkbox"] {
+    -webkit-appearance:none;  /* Hides the default checkbox style */
+    height:1.5em;
+    width:1.5em;
+    cursor:pointer;
+    position:relative;
+    @include border_radius();
+    background-color:$color_body;
+    margin-right:1em;
+    font-size: .844em;
+}
+input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    text-align:center;
+    font-family: 'Font Awesome 7 Free';
+    font-weight: 900;
+    line-height: 1.5;
+    content: "\f00c";
+    color: $color_bg;
+    @include opacity(0.1);
+    @include transition;
+}
+
+input[type="checkbox"]:checked:before {
+    @include opacity(1);
+}
+input[type="submit"],
+.button,
+input[type="button"],
+.navigation-post a,
+.navigation-paging a {
+	padding:.844em 1.125em;
+	color: $color_bg;
+	font-weight: 600;
+	background:$color_theme;
+	@include border_radius();
+	border:0;
+	@include transition;
+	&:hover {
+		text-decoration: none;
+		-webkit-box-shadow:
+			inset 0 -5em 0 0 rgba(0,0,0,0.1);
+		box-shadow:
+			inset 0 -5em 0 0 rgba(0,0,0,0.1);
+	}
+	&:active {
+		-webkit-transform:translateY(.075em);
+		-webkit-box-shadow:
+			inset 0 -5em 0 0 rgba(0,0,0,0.1);
+		box-shadow:
+			inset 0 -5em 0 0 rgba(0,0,0,0.1);
+	}
+}
+
+
+/**
+ * General
+ */
+hr {
+	height:1px;
+	border:0;
+	background: $color_body;
+	@include opacity(0.2);
+}
+table {
+	width:100%;
+	border-collapse: separate;
+	th, td {
+		padding:.563em;
+		padding-left:0;
+	}
+	tr {
+		th, td {
+			border-bottom:.134em solid rgba(0,0,0,0.05);
+		}
+	}
+}
+img {
+	display: block;
+	@include border_radius;
+	max-width:100%;
+	height: auto;
+	&.wp-smiley {
+		display: inline-block;
+	}
+}
+
+
+/**
+ * Header
+ */
+.header {
+	padding:1.777em 1.125em 2.665em 1.125em;
+	margin-left:-1.125em;
+	margin-right:-1.125em;
+	margin-bottom:4.209em;
+	background-color:$color_theme;
+	background-position:center center;
+	background-repeat:no-repeat;
+	p.toggle-container {
+		width:2.369em;
+		height:2.369em;
+		margin:0 0 1.777em;
+	}
+}
+.site-intro {
+	color: #fff;
+	&:hover {
+		text-decoration: none;
+	}
+	.avatar {
+		width:128px;
+		height: auto;
+		display: block;
+		@include border_radius(100%);
+		@include box_shadow(0,0,0,.618em,rgba(0,0,0,0.05));
+	}
+	.grav-clone {
+		display: none;
+	}
+}
+.site-title, .site-description {
+	color: #fff;
+	a {
+		color: #fff;
+	}
+}
+.site-title {
+	@include psi;
+	color: #fff;
+	margin-bottom:0;
+}
+.site-description {
+	font-size:.844em;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	@include opacity(0.75);
+}
+
+
+/**
+ * Navigation
+ */
+ul.menu {
+	padding-top:1.777em;
+}
+.main-nav {
+	border-right:1px solid rgba(0,0,0,0.1);
+	margin-bottom: 2.618em;
+	background: $color_bg;
+	.buttons {
+		padding: 1.777em 1.125em;
+	}
+	.menu {
+		padding:0 1.125em;
+	}
+	h2 {
+		padding:0 1.125em;
+	}
+}
+.navigation-paging, .navigation-post, .navigation-comments {
+	margin-top:1em;
+	margin-bottom:2.665em;
+}
+.infinite-scroll .navigation-paging {
+	display: none;
+}
+
+
+/**
+ * Posts
+ */
+article.post, article.page {
+	margin-bottom:2.665em;
+	padding-bottom:1.999em;
+}
+.post-meta, .post-date {
+	font-size:.844em;
+}
+.post-date + .post-title {
+	margin: 0;
+}
+.page-title {
+	margin-top: 0;
+	margin-bottom: 0.5em;
+}
+
+
+/**
+ * Images
+ */
+.aligncenter {
+	margin:0 auto 1.777em;
+}
+
+.alignright {
+	margin:1.777em 0 1.777em 1.777em;
+}
+
+.gallery-caption, .wp-caption-text {
+	font-style: italic;
+	font-size: .844em;
+	line-height: 1.33em
+}
+
+.wp-caption {
+	img {
+		margin-bottom: 1em;
+	}
+}
+
+img.alignleft {
+	margin:1.777em 1.777em 1.777em 0;
+}
+
+img.wp-post-image {
+	margin-bottom:1.777em;
+}
+
+.gallery img {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/**
+ * Comments
+ */
+.comments {
+	.bypostauthor {
+		> .comment-body .comment-content {
+			background: $color_theme;
+			-webkit-box-shadow: none;
+			box-shadow:			none;
+			color: #fff;
+			&:after {
+				border-color: transparent transparent $color_theme transparent;
+			}
+			&:before {
+				display: none;
+			}
+			a {
+				color: $color_bg;
+				text-decoration: underline;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+	.comment-content {
+		padding:1em;
+		@include box_shadow(0,0,0,.134em,rgba(0,0,0,0.05));
+		@include border_radius;
+		margin-bottom:1em;
+		position: relative;
+		p:last-child {
+			margin-bottom:0;
+		}
+		> ul, > ol {
+			margin-bottom:1.777em;
+		}
+		&:before, &:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top:-1.6em;
+			left:.844em;
+			border:.75em solid rgba(0,0,0,0.05);
+			border-color: transparent transparent rgba(0,0,0,0.05) transparent;
+		}
+		&:after {
+			margin-top:.201em;
+			border-color: transparent transparent $color_bg transparent;
+		}
+	}
+	.comment-author {
+		.comment-meta {
+			font-size:.844em;
+		}
+	}
+	.comment-body {
+		margin-bottom:2.665em;
+	}
+}
+
+
+/**
+ * Widgets
+ */
+.widget {
+	margin-bottom:0.75em;
+}
+.widget_archive {
+	li {
+		@extend .icon_archive;
+	}
+}
+.widget_categories {
+	li {
+		@extend .icon_category;
+	}
+}
+.widget_pages {
+	li {
+		@extend .icon_page;
+	}
+}
+.widget_recent_comments {
+	li {
+		@extend .icon_comment;
+	}
+}
+.widget_recent_entries {
+	li {
+		@extend .icon_post;
+	}
+}
+
+
+/**
+ * Footer
+ */
+.footer {
+	margin-left:-999em;
+	margin-right:-999em;
+	background:rgba(0,0,0,0.02);
+	padding:4.209em 999em;
+}
+
+
+/**
+ * Main Layout
+ * @type Desktop
+ */
+@media only screen and (min-width: 769px) {
+
+/* Only apply the layout if the user is on a desktop / tablet */
+
+	body {
+		padding:0;
+		font-size: 1.125em;
+	}
+	.inner-wrap {
+		padding:0 3.157em;
+	}
+
+
+	/**
+	 * Layout
+	 */
+	.content {
+		padding-bottom:4.209em;
+	}
+
+
+	/**
+	 * Header
+	 */
+	.header {
+		padding-top:7.478em;
+		padding-left:999em;
+		padding-right:999em;
+		margin-left:-999em;
+		margin-right:-999em;
+		background-color: $color_theme;
+
+	}
+	.background-contrast {
+		.header {
+			margin-left: -3.157em;
+			margin-right: -3.157em;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		.footer {
+			margin-left: -3.157em;
+			margin-right: -3.157em;
+			padding-left: 3.157em;
+			padding-right: 3.157em;
+		}
+		.main-nav {
+			max-width: 69.75em;
+			margin: 0 auto;
+		}
+	}
+	.csstransforms3d.csstransitions  {
+		.background-contrast {
+			.main-nav {
+				left: auto;
+			}
+		}
+	}
+	.site-title {
+		@include omega;
+		color: #fff;
+		margin-bottom:0;
+	}
+	.site-intro {
+		.avatar {
+			margin:0 auto;
+			@include transition(all,ease,.4s);
+			&:hover {
+				position:relative;
+				-webkit-transform: translateY(-.75em);
+				-moz-transform: translateY(-.75em);
+				-ms-transform: translateY(-.75em);
+				transform: translateY(-.75em);
+			}
+		}
+		.site-title, .site-description {
+			text-align: center;
+		}
+	}
+
+
+	/**
+	 * Navigation
+	 */
+	.main-nav {
+		border-right:0;
+        border-bottom:.422em solid $color_theme;
+		margin-bottom:0;
+		li {
+			padding:0;
+		}
+		.sub-menu {
+			display: none;
+		}
+		li.menu-item-has-children:hover > .sub-menu {
+			display: block;
+		}
+		ul.menu {
+			> li {
+				&:hover > a, > a:hover {
+		        	background-color: $color_theme;
+		        	color: #fff;
+		        }
+		        &.current-menu-item > a {
+		        	position: relative;
+		        	&:before {
+		        		content: "";
+		        		display: block;
+		        		position: absolute;
+		        		bottom:0;
+		        		left:50%;
+		        		margin-left:-.563em;
+		        		color: $color_theme;
+		        		border:.563em solid $color_theme;
+		        		border-color:transparent transparent $color_theme transparent;
+		        	}
+		        }
+		        &.parent { // Styles applied to all parent list items
+		            > a {
+		            	position: relative;
+		            	padding-right: 2em;
+		            	&:after {
+			                @include iconafter;
+			                content: "\f107";
+			                position: absolute;
+			                right: 0.5em;
+			                top: 50%;
+			                transform: translateY(-50%);
+			                width: auto;
+			                line-height: 1;
+			            }
+		            }
+		        }
+		    }
+		    a {
+				padding:.844em 1.125em;
+				text-decoration: none;
+				@include transition;
+			}
+		    /* CHILDREN */
+		    ul {
+		        width:14.949em;
+		        background-color: color.adjust($color_theme, $lightness: -15%);
+		        @include box_shadow(0,1px,1px,0,rgba(0,0,0,0.2));
+		        li {
+		        	&.parent {
+		                > a {
+		                	position: relative;
+		                	padding-right: 2em;
+		                	&:after {
+			                	@include iconafter;
+			                    content:"\f105";
+			                    position: absolute;
+			                    right: 0.5em;
+			                    top: 50%;
+			                    transform: translateY(-50%);
+			                    width: auto;
+			                    line-height: 1;
+			                }
+		                }
+		            }
+	        		&:hover > a, &.current-menu-item > a, > a:hover {
+	        			background-color:rgba(0,0,0,0.05);
+	        			padding-left:1.5em;
+	        		}
+		        }
+		        a {
+	        		padding:.475em 1.125em;
+	        		color: #fff;
+	        	}
+		    }
+		    /* THIRD LEVEL AND DEEPER */
+		    ul ul {
+		        left:100%;
+		        top:0;
+		    }
+		}
+	}
+
+
+	/**
+	 * Sidebar
+	 */
+	 .sidebar {
+		padding:4.209rem 0 0 0;
+		@include borderbox;
+		font-size:.844em;
+		margin-top:-4.209rem;
+		/**
+		  * Sidebar Widgets
+		  */
+		 .widget {
+		 	@include opacity(0.8);
+		 }
+	 }
+
+
+	/**
+	 * Posts
+	 */
+	.page-title, .post-title {
+		@include psi;
+	}
+
+	blockquote {
+		padding-left: 0;
+	}
+
+
+	/**
+	 * Comments
+	 */
+	.comments {
+		.comment-content {
+			padding:1.999em;
+		}
+	}
+
+}
+
+
+/**
+ * WordPress Block Quote
+ */
+.wp-block-quote {
+	border-left: 0 !important;
+	padding-left: 1.75em !important;
+	p {
+		margin-bottom: 0;
+        margin-left: 1.75em;
+	}
+}
+
+/**
+ * WordPress Block Search Widget
+ */
+.wp-block-search {
+	position: relative;
+
+	.wp-block-search__inside-wrapper {
+		position: relative;
+	}
+
+	.wp-block-search__input {
+		padding-right: 3.157em !important;
+	}
+
+	.wp-block-search__button,
+	button.wp-block-search__button {
+		position: absolute !important;
+		top: 0 !important;
+		right: 0 !important;
+		bottom: 0 !important;
+		width: 3.157em !important;
+		height: auto !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		text-indent: -999em !important;
+		overflow: hidden !important;
+		white-space: nowrap !important;
+		font-size: 0 !important;
+		line-height: 0 !important;
+		background: transparent !important;
+		border: 0 !important;
+		box-shadow: none !important;
+		cursor: pointer !important;
+
+		&:hover {
+			background: rgba(0,0,0,0.05) !important;
+			@include border_radius_left(0);
+		}
+
+		&::before {
+			content: "\f002" !important;
+			font-family: "Font Awesome 7 Free" !important;
+			font-weight: 900 !important;
+			display: block !important;
+			position: absolute !important;
+			top: 0 !important;
+			right: 0 !important;
+			bottom: 0 !important;
+			left: 0 !important;
+			text-indent: 0 !important;
+			text-align: center !important;
+			line-height: 2.9 !important;
+			font-size: 1rem !important;
+			pointer-events: none !important;
+			color: $color_body !important;
+		}
+	}
+}
