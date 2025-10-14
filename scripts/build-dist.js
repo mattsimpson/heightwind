@@ -53,6 +53,7 @@ const EXCLUDE_PATTERNS = [
   '.claude',
   'dist',
   '*.scss',
+  '*.zip',
   'package.json',
   'package-lock.json',
   '.gitignore',
