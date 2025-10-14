@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-14T00:16:54+00:00\n"
+"POT-Creation-Date: 2025-10-14T23:57:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: heightwind\n"
@@ -20,9 +20,8 @@ msgid "HeightWind"
 msgstr ""
 
 #. Theme URI of the theme
-#. Author URI of the theme
 #: style.css
-msgid "https://mattsimpson.ca"
+msgid "https://github.com/mattsimpson/heightwind"
 msgstr ""
 
 #. Description of the theme
@@ -35,76 +34,99 @@ msgstr ""
 msgid "Matt Simpson"
 msgstr ""
 
+#. Author URI of the theme
+#: style.css
+msgid "https://mattsimpson.ca"
+msgstr ""
+
 #: 404.php:24
+#: dist/heightwind/404.php:24
 msgid "404 not found"
 msgstr ""
 
 #: 404.php:34
+#: dist/heightwind/404.php:34
 msgid "It seems the page you're looking for no longer (or indeed never did) exists at this location. Please try searching..."
 msgstr ""
 
 #: 404.php:40
+#: dist/heightwind/404.php:40
 msgid "Try looking in the monthly archives."
 msgstr ""
 
 #. translators: %s: Category name
 #: archive.php:26
+#: dist/heightwind/archive.php:26
 #, php-format
 msgid "Category Archives: %s"
 msgstr ""
 
 #. translators: %s: Tag name
 #: archive.php:30
+#: dist/heightwind/archive.php:30
 #, php-format
 msgid "Tag Archives: %s"
 msgstr ""
 
 #. translators: %s: Author name
 #: archive.php:38
+#: dist/heightwind/archive.php:38
 #, php-format
 msgid "Author Archives: %s"
 msgstr ""
 
 #. translators: %s: Date
 #: archive.php:47
+#: dist/heightwind/archive.php:47
 #, php-format
 msgid "Daily Archives: %s"
 msgstr ""
 
 #. translators: %s: Month and year
 #: archive.php:51
+#: dist/heightwind/archive.php:51
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr ""
 
 #. translators: %s: Year
 #: archive.php:55
+#: dist/heightwind/archive.php:55
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr ""
 
 #: archive.php:58
+#: dist/heightwind/archive.php:58
 msgid "Archives"
 msgstr ""
 
 #: archive.php:96
+#: dist/heightwind/archive.php:96
+#: dist/heightwind/index.php:34
+#: dist/heightwind/search.php:39
 #: index.php:34
 #: search.php:39
 msgid "Nothing Found"
 msgstr ""
 
 #: archive.php:106
+#: dist/heightwind/archive.php:106
+#: dist/heightwind/index.php:44
+#: dist/heightwind/search.php:45
 #: index.php:44
 #: search.php:45
 msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
 msgstr ""
 
 #: comments.php:17
+#: dist/heightwind/comments.php:17
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr ""
 
 #. translators: 1: Number of comments, 2: Post title
 #: comments.php:31
+#: dist/heightwind/comments.php:31
 #, php-format
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
@@ -112,15 +134,20 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: comments.php:46
+#: dist/heightwind/comments.php:46
 msgid "Comments are closed."
 msgstr ""
 
 #: content-page.php:29
+#: dist/heightwind/content-page.php:29
 msgid "Pages:"
 msgstr ""
 
 #. translators: %s: Post title
 #: content.php:19
+#: dist/heightwind/content.php:19
+#: dist/heightwind/framework/heightwind-template.php:164
+#: dist/heightwind/image.php:27
 #: framework/heightwind-template.php:164
 #: image.php:27
 #, php-format
@@ -128,198 +155,254 @@ msgid "Permalink to %s"
 msgstr ""
 
 #: content.php:32
+#: dist/heightwind/content.php:32
 msgid "Continue Reading..."
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-functions.php:21
 #: framework/heightwind-functions.php:21
 msgid "Main menu"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-functions.php:92
 #: framework/heightwind-functions.php:92
 msgid "Sidebar"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-functions.php:102
 #: framework/heightwind-functions.php:102
 msgid "Footer #1"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-functions.php:110
 #: framework/heightwind-functions.php:110
 msgid "Footer #2"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-functions.php:118
 #: framework/heightwind-functions.php:118
 msgid "Footer #3"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:68
 #: framework/heightwind-options.php:68
 msgid "Navigation"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:75
 #: framework/heightwind-options.php:75
 msgid "Layout"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:86
 #: framework/heightwind-options.php:86
 msgid "Link Color"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:93
 #: framework/heightwind-options.php:93
 msgid "Header Color"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:100
 #: framework/heightwind-options.php:100
 msgid "Text Color"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:107
 #: framework/heightwind-options.php:107
 msgid "Background Color"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:114
 #: framework/heightwind-options.php:114
 msgid "Content Background Color"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:287
 #: framework/heightwind-options.php:287
 msgid "Content on left"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-options.php:291
 #: framework/heightwind-options.php:291
 msgid "Content on right"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:18
 #: framework/heightwind-template.php:18
 msgid "Skip to content"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:37
 #: framework/heightwind-template.php:37
 msgid "Skip to navigation"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:86
 #: framework/heightwind-template.php:86
 msgid "Home"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:87
 #: framework/heightwind-template.php:87
 msgid "Return to Content"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:142
 #: framework/heightwind-template.php:142
 msgid "0 Comments"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:142
 #: framework/heightwind-template.php:142
 msgid "1 Comment"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:142
 #: framework/heightwind-template.php:142
 msgid "% Comments"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:179
 #: framework/heightwind-template.php:179
 msgid "Comment navigation"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:180
 #: framework/heightwind-template.php:180
 msgid "Older Comments"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:181
 #: framework/heightwind-template.php:181
 msgid "Newer Comments"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:214
 #: framework/heightwind-template.php:214
 msgid "Post navigation"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:224
 #: framework/heightwind-template.php:224
 msgid "Older posts"
 msgstr ""
 
+#: dist/heightwind/framework/heightwind-template.php:228
 #: framework/heightwind-template.php:228
 msgid "Newer posts"
 msgstr ""
 
 #. translators: 1: date, 2: time
+#: dist/heightwind/framework/heightwind-template.php:264
 #: framework/heightwind-template.php:264
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
 #. translators: 1: date, 2: time
+#: dist/heightwind/framework/heightwind-template.php:264
 #: framework/heightwind-template.php:264
 msgid "Edit"
 msgstr ""
 
-#: framework/heightwind-template.php:271
+#. translators: %s: comment author name
+#: dist/heightwind/framework/heightwind-template.php:269
+#: framework/heightwind-template.php:269
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr ""
+
+#: dist/heightwind/framework/heightwind-template.php:274
+#: framework/heightwind-template.php:274
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: framework/heightwind-template.php:359
+#: dist/heightwind/framework/heightwind-template.php:362
+#: framework/heightwind-template.php:362
 msgid "Powered by"
 msgstr ""
 
-#: framework/heightwind-template.php:359
+#: dist/heightwind/framework/heightwind-template.php:362
+#: framework/heightwind-template.php:362
 msgid "HeightWind - Customisable and extendable WordPress theme"
 msgstr ""
 
-#: framework/heightwind-template.php:373
+#: dist/heightwind/framework/heightwind-template.php:376
+#: framework/heightwind-template.php:376
 msgid "Back to top"
 msgstr ""
 
+#: dist/heightwind/includes/integrations/woocommerce/functions.php:19
 #: includes/integrations/woocommerce/functions.php:19
 msgid "WooCommerce"
 msgstr ""
 
+#: dist/heightwind/includes/integrations/woocommerce/functions.php:32
 #: includes/integrations/woocommerce/functions.php:32
 msgid "Display Header Cart"
 msgstr ""
 
+#: dist/heightwind/includes/integrations/woocommerce/functions.php:46
 #: includes/integrations/woocommerce/functions.php:46
 msgid "Display Header Product Search"
 msgstr ""
 
+#: dist/heightwind/includes/integrations/woocommerce/functions.php:60
 #: includes/integrations/woocommerce/functions.php:60
 msgid "Archives Full Width?"
 msgstr ""
 
+#: dist/heightwind/includes/integrations/woocommerce/functions.php:74
 #: includes/integrations/woocommerce/functions.php:74
 msgid "Product Details Full Width?"
 msgstr ""
 
 #. translators: %d: Number of items in cart
+#: dist/heightwind/includes/integrations/woocommerce/functions.php:169
+#: dist/heightwind/includes/integrations/woocommerce/template.php:75
 #: includes/integrations/woocommerce/functions.php:169
-#: includes/integrations/woocommerce/template.php:74
+#: includes/integrations/woocommerce/template.php:75
 msgid "View your cart"
 msgstr ""
 
 #. translators: %d: Number of items in cart
+#: dist/heightwind/includes/integrations/woocommerce/functions.php:169
+#: dist/heightwind/includes/integrations/woocommerce/template.php:75
 #: includes/integrations/woocommerce/functions.php:169
+#: includes/integrations/woocommerce/template.php:75
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] ""
 msgstr[1] ""
 
+#: dist/heightwind/index.php:11
 #: index.php:11
 msgid "You do not have sufficient permissions to access this page!"
 msgstr ""
 
 #. translators: %s: Search query
+#: dist/heightwind/search.php:23
 #: search.php:23
 #, php-format
 msgid "Search Results for: %s"
 msgstr ""
 
+#: dist/heightwind/searchform.php:8
 #: searchform.php:8
 msgctxt "assistive text"
 msgid "Search"
 msgstr ""
 
+#: dist/heightwind/searchform.php:9
 #: searchform.php:9
 msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr ""
 
+#: dist/heightwind/searchform.php:10
 #: searchform.php:10
 msgctxt "submit button"
 msgid "Search"
@@ -329,76 +412,91 @@ msgstr ""
 msgid "Full Width"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Color name"
 msgid "Primary"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Color name"
 msgid "Secondary"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Color name"
 msgid "Accent"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Color name"
 msgid "Background"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Color name"
 msgid "Foreground"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Space size name"
 msgid "Small"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Space size name"
 msgid "Medium"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Space size name"
 msgid "Large"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Space size name"
 msgid "Extra Large"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Font size name"
 msgid "Small"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Font size name"
 msgid "Medium"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Font size name"
 msgid "Large"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Font size name"
 msgid "Extra Large"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Font size name"
 msgid "2X Large"
 msgstr ""
 
+#: dist/heightwind/theme.json
 #: theme.json
 msgctxt "Font family name"
 msgid "Open Sans"

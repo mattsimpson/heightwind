@@ -264,7 +264,10 @@ if ( ! function_exists( 'heightwind_comment' ) ) {
 						printf( __( '%1$s at %2$s', 'heightwind' ), get_comment_date(), get_comment_time()) ?></a><?php edit_comment_link(__( 'Edit', 'heightwind' ),'  ','' );
 					?>
 				</div>
-				<?php printf( __( '<cite class="fn">%s</cite>' ), get_comment_author_link() ) ?>
+				<?php
+			/* translators: %s: comment author name */
+			printf( __( '<cite class="fn">%s</cite>', 'heightwind' ), get_comment_author_link() )
+		?>
 			</div>
 			<div class="comment-content">
 				<?php if ($comment->comment_approved == '0') { ?>
