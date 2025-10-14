@@ -47,21 +47,61 @@ const INCLUDE_PATTERNS = [
 
 // Patterns to explicitly exclude
 const EXCLUDE_PATTERNS = [
+  // Development files
   'node_modules',
   '.git',
-  '.idea',
   '.claude',
   'dist',
+  'scripts',
   '*.scss',
   '*.zip',
   'package.json',
   'package-lock.json',
   '.gitignore',
   '.gitattributes',
-  'README.md',
   'changelog.md',
   'scss',
-  'scripts',
+
+  // Operating System Files (macOS)
+  '.DS_Store',
+  '._*',
+  '.AppleDouble',
+  '.LSOverride',
+  '.Spotlight-V100',
+  '.Trashes',
+
+  // Operating System Files (Windows)
+  'Thumbs.db',
+  'ehthumbs.db',
+  'Desktop.ini',
+  '$RECYCLE.BIN',
+
+  // Operating System Files (Linux)
+  '.directory',
+  '.Trash-*',
+
+  // IDE and Editor Files
+  '.idea',
+  '.vscode',
+  '.project',
+  '.settings',
+  '.buildpath',
+  '*.swp',
+  '*.swo',
+  '*~',
+
+  // Temporary and Log Files
+  '*.log',
+  '*.tmp',
+  '*.temp',
+  '*.bak',
+  '*.cache',
+
+  // Build artifacts
+  '.sass-cache',
+  'npm-debug.log*',
+  'yarn-debug.log*',
+  'yarn-error.log*',
 ];
 
 /**

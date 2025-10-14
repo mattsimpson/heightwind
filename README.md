@@ -4,7 +4,7 @@
 
 HeightWind is a lightweight, free WordPress theme designed to showcase content. It features a clean, responsive design with a strong focus on typography, plus a bunch of presentational options and widgetised regions allowing you to give your site a unique touch.
 
-**Modernized and maintained by [Matt Simpson](https://mattsimpson.ca)**
+**[HeightWind](https://github.com/mattsimpson/heightwind/) is maintained and modernized by [Matt Simpson](https://mattsimpson.ca)**
 **Based on [Highwind](https://github.com/jameskoster/highwind) by [James Koster](http://jameskoster.co.uk)**
 
 # License
