@@ -19,9 +19,10 @@ add_action( 'heightwind_body_top',            	'heightwind_skip_to_content', 1 )
 /**
  * Header
  */
-add_action( 'heightwind_header',                	'heightwind_navigation_toggle', 10 );     			// Site title
+add_action( 'heightwind_header',                	'heightwind_navigation_toggle', 10 );     			// Navigation toggle (mobile)
 add_action( 'heightwind_header',                	'heightwind_site_title', 20 );          				// Site title
 add_action( 'heightwind_header',                	'heightwind_main_navigation', 30 );     				// Navigation
+add_action( 'heightwind_navigation_top',        	'heightwind_color_scheme_toggle', 10 );   			// Color scheme toggle (in nav bar)
 
 
 /**

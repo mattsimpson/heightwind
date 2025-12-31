@@ -66,12 +66,18 @@ if ( ! function_exists( 'heightwind_add_scripts' ) ) {
 		wp_register_style( 'open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' );
 
 		// Enqueue styles
-		wp_enqueue_style( 'highwind-styles', get_stylesheet_uri(), array( 'open-sans' ), '1.2.4' );
-		wp_enqueue_style( 'highwind-accessibility', get_template_directory_uri() . '/accessibility.css', array( 'highwind-styles' ), '1.2.8' );
+		wp_enqueue_style( 'highwind-styles', get_stylesheet_uri(), array( 'open-sans' ), '2.1.0' );
+		wp_enqueue_style( 'highwind-accessibility', get_template_directory_uri() . '/accessibility.css', array( 'highwind-styles' ), '2.1.0' );
 
 		// Enqueue Scripts
 		wp_enqueue_script( 'highwind-plugins', get_template_directory_uri() . '/framework/js/plugins.min.js', array( 'jquery' ), '', true );
 		wp_enqueue_script( 'highwind-script', get_template_directory_uri() . '/framework/js/script.min.js', array( 'jquery' ), '', true );
+
+		// Color scheme script (no dependencies, loads in footer) - only if dark mode enabled
+		if ( get_theme_mod( 'heightwind_dark_mode_enabled', true ) ) {
+			wp_enqueue_script( 'heightwind-color-scheme', get_template_directory_uri() . '/framework/js/color-scheme.js', array(), '2.1.0', true );
+		}
+
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}

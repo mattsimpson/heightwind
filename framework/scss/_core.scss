@@ -98,19 +98,23 @@ form {
 		}
 	}
 	::-webkit-input-placeholder {
-	   color: rgba(0,0,0,0.35);
+	   color: var(--hw-color-text);
+	   opacity: 0.5;
 	}
 
 	:-moz-placeholder { /* Firefox 18- */
-	   color: rgba(0,0,0,0.35);
+	   color: var(--hw-color-text);
+	   opacity: 0.5;
 	}
 
 	::-moz-placeholder {  /* Firefox 19+ */
-	   color: rgba(0,0,0,0.35);
+	   color: var(--hw-color-text);
+	   opacity: 0.5;
 	}
 
 	:-ms-input-placeholder {
-	   color: rgba(0,0,0,0.35);
+	   color: var(--hw-color-text);
+	   opacity: 0.5;
 	}
 	[placeholder]:focus::-webkit-input-placeholder {
 		-webkit-transition: opacity 0.5s 0.5s ease;
@@ -120,11 +124,11 @@ form {
 	}
 }
 .required {
-	color: darkRed;
+	color: var(--hw-color-error);
 }
 fieldset {
 	padding:1.5em;
-	border:1px solid rgba(0,0,0,0.1);
+	border:1px solid var(--hw-color-border);
 	@include border_radius;
 }
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea {
@@ -529,7 +533,7 @@ form.searchform {
 		display: inline;
 		margin-right: 1em;
 		padding-right: 1em;
-		border-right: 1px solid rgba(0,0,0,0.1);
+		border-right: 1px solid var(--hw-color-border);
 		&:last-child {
 			border-right: 0;
 		}

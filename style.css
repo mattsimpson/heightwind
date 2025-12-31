@@ -715,6 +715,131 @@ HeightWind is distributed under the terms of the GNU GPL
  * GRID.SCSS
  * Based on semanticgrid.gs
  */
+:root,
+[data-color-scheme=light] {
+  --hw-color-bg: #f8f8f9;
+  --hw-color-surface: #ffffff;
+  --hw-color-text: #666A76;
+  --hw-color-heading: #444854;
+  --hw-color-accent: #53a1b8;
+  --hw-color-accent-hover: #3d8aa3;
+  --hw-color-border: rgba(0, 0, 0, 0.1);
+  --hw-color-shadow: rgba(0, 0, 0, 0.05);
+  --hw-color-input-bg: rgba(0, 0, 0, 0.05);
+  --hw-color-code-bg: rgba(0, 0, 0, 0.05);
+  --hw-color-code-text: #dc5494;
+  --hw-color-on-accent: #ffffff;
+  --hw-color-info: #56acd3;
+  --hw-color-success: #8ada46;
+  --hw-color-warning: #eeb44c;
+  --hw-color-error: #e74c3c;
+}
+
+[data-color-scheme=dark] {
+  --hw-color-bg: #1a1a2e;
+  --hw-color-surface: #16213e;
+  --hw-color-text: #e0e0e0;
+  --hw-color-heading: #ffffff;
+  --hw-color-accent: #6bc5db;
+  --hw-color-accent-hover: #8fd4e6;
+  --hw-color-border: rgba(255, 255, 255, 0.1);
+  --hw-color-shadow: rgba(0, 0, 0, 0.3);
+  --hw-color-input-bg: rgba(255, 255, 255, 0.1);
+  --hw-color-code-bg: rgba(255, 255, 255, 0.1);
+  --hw-color-code-text: #f0a8c9;
+  --hw-color-on-accent: #1a1a2e;
+  --hw-color-info: #7cc4e6;
+  --hw-color-success: #a8e87a;
+  --hw-color-warning: #f5c87a;
+  --hw-color-error: #ff6b6b;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-color-scheme=auto] {
+    --hw-color-bg: #1a1a2e;
+    --hw-color-surface: #16213e;
+    --hw-color-text: #e0e0e0;
+    --hw-color-heading: #ffffff;
+    --hw-color-accent: #6bc5db;
+    --hw-color-accent-hover: #8fd4e6;
+    --hw-color-border: rgba(255, 255, 255, 0.1);
+    --hw-color-shadow: rgba(0, 0, 0, 0.3);
+    --hw-color-input-bg: rgba(255, 255, 255, 0.1);
+    --hw-color-code-bg: rgba(255, 255, 255, 0.1);
+    --hw-color-code-text: #f0a8c9;
+    --hw-color-on-accent: #1a1a2e;
+    --hw-color-info: #7cc4e6;
+    --hw-color-success: #a8e87a;
+    --hw-color-warning: #f5c87a;
+    --hw-color-error: #ff6b6b;
+  }
+}
+.color-scheme-toggle {
+  display: flex;
+  align-items: center;
+  padding: 0.2em;
+  background: var(--hw-color-input-bg);
+  border: none;
+  border-radius: 6px;
+}
+.color-scheme-toggle .toggle-light,
+.color-scheme-toggle .toggle-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4em 0.5em;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--hw-color-text);
+  opacity: 0.5;
+  transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+.color-scheme-toggle .toggle-light:hover,
+.color-scheme-toggle .toggle-dark:hover {
+  opacity: 0.8;
+}
+.color-scheme-toggle .toggle-light:focus,
+.color-scheme-toggle .toggle-dark:focus {
+  outline: none;
+}
+.color-scheme-toggle .toggle-light:focus-visible,
+.color-scheme-toggle .toggle-dark:focus-visible {
+  outline: 2px solid var(--hw-color-accent);
+  outline-offset: 1px;
+}
+.color-scheme-toggle .toggle-light svg,
+.color-scheme-toggle .toggle-dark svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+.color-scheme-toggle .toggle-light[aria-pressed=true],
+.color-scheme-toggle .toggle-dark[aria-pressed=true] {
+  opacity: 1;
+  background: var(--hw-color-surface);
+  color: var(--hw-color-accent);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav .color-scheme-toggle {
+  margin: 0.75em 1.125em;
+}
+
+@media only screen and (min-width: 769px) {
+  .main-nav {
+    position: relative;
+  }
+  .main-nav .color-scheme-toggle {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    z-index: 10;
+  }
+}
 /*
 Theme Name: HeightWind
 Theme URI: https://github.com/mattsimpson/heightwind
@@ -840,16 +965,20 @@ form .comment-form-author input, form .comment-form-email input, form .comment-f
   clear: left;
 }
 form ::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.35);
+  color: var(--hw-color-text);
+  opacity: 0.5;
 }
 form :-moz-placeholder { /* Firefox 18- */
-  color: rgba(0, 0, 0, 0.35);
+  color: var(--hw-color-text);
+  opacity: 0.5;
 }
 form ::-moz-placeholder { /* Firefox 19+ */
-  color: rgba(0, 0, 0, 0.35);
+  color: var(--hw-color-text);
+  opacity: 0.5;
 }
 form :-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.35);
+  color: var(--hw-color-text);
+  opacity: 0.5;
 }
 form [placeholder]:focus::-webkit-input-placeholder {
   -webkit-transition: opacity 0.5s 0.5s ease;
@@ -859,12 +988,12 @@ form [placeholder]:focus::-webkit-input-placeholder {
 }
 
 .required {
-  color: darkRed;
+  color: var(--hw-color-error);
 }
 
 fieldset {
   padding: 1.5em;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--hw-color-border);
   -webkit-border-radius: 0.201em;
   border-radius: 0.201em;
 }
@@ -1424,7 +1553,7 @@ form.searchform:before {
   display: inline;
   margin-right: 1em;
   padding-right: 1em;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid var(--hw-color-border);
 }
 .post-meta li:last-child {
   border-right: 0;
@@ -1886,8 +2015,8 @@ html {
 
 body {
   line-height: 1.5em;
-  color: #666A76;
-  background: #f8f8f9;
+  color: var(--hw-color-text);
+  background: var(--hw-color-bg);
   font-size: 1em;
 }
 
@@ -1896,7 +2025,7 @@ body {
  */
 .inner-wrap {
   padding: 0 1.125em;
-  background-color: #f8f8f9;
+  background-color: var(--hw-color-surface);
 }
 
 /**
@@ -1906,7 +2035,7 @@ h1, h2, h3, h4, h5, h6, .heading, .omega, .psi, .alpha, .beta, .gamma, .delta {
   font-weight: 400;
   margin: 0;
   margin-bottom: 1rem;
-  color: #444854;
+  color: var(--hw-color-heading);
   line-height: 1.333;
   position: relative;
   text-align: left;
@@ -2012,7 +2141,7 @@ acronym, abbr[title] {
 }
 
 ins {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--hw-color-border);
   text-decoration: none;
 }
 
@@ -2047,14 +2176,14 @@ blockquote:before {
 }
 
 code, pre {
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--hw-color-code-bg);
   padding: 0.1em 0.201em;
   -webkit-border-radius: 0.201em;
   border-radius: 0.201em;
-  color: #dc5494;
+  color: var(--hw-color-code-text);
   margin: 0 0.201em;
   padding: 0 0.201em;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--hw-color-border);
   font-weight: 600;
 }
 
@@ -2091,7 +2220,7 @@ ol > li:last-child {
  * Anchors
  */
 a {
-  color: #53a1b8;
+  color: var(--hw-color-accent);
   text-decoration: none;
 }
 a:hover {
@@ -2107,8 +2236,8 @@ a.more-link {
  */
 input[type=text], input[type=password], input[type=email], input[type=search], input.input-text, textarea {
   padding: 0.844em;
-  background: rgba(0, 0, 0, 0.05);
-  color: #666A76;
+  background: var(--hw-color-input-bg);
+  color: var(--hw-color-text);
   border: 0;
   -webkit-border-radius: 0.201em;
   border-radius: 0.201em;
@@ -2130,8 +2259,8 @@ input[type=radio] {
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box; /* Opera/IE 8+ */
   font-size: 0.844em;
-  border: 0.422em solid #666A76;
-  background: #666A76;
+  border: 0.422em solid var(--hw-color-text);
+  background: var(--hw-color-text);
   cursor: pointer;
   position: relative;
   -webkit-border-radius: 100%;
@@ -2159,7 +2288,7 @@ input[type=checkbox] {
   position: relative;
   -webkit-border-radius: 0.201em;
   border-radius: 0.201em;
-  background-color: #666A76;
+  background-color: var(--hw-color-text);
   margin-right: 1em;
   font-size: 0.844em;
 }
@@ -2175,7 +2304,7 @@ input[type=checkbox]:before, input[type=checkbox]:checked:before {
   font-weight: 900;
   line-height: 1.5;
   content: "\f00c";
-  color: #f8f8f9;
+  color: var(--hw-color-bg);
   filter: alpha(opacity=10);
   -moz-opacity: 0.1;
   -khtml-opacity: 0.1;
@@ -2199,9 +2328,9 @@ input[type=button],
 .navigation-post a,
 .navigation-paging a {
   padding: 0.844em 1.125em;
-  color: #f8f8f9;
+  color: var(--hw-color-on-accent);
   font-weight: 600;
-  background: #53a1b8;
+  background: var(--hw-color-accent);
   -webkit-border-radius: 0.201em;
   border-radius: 0.201em;
   border: 0;
@@ -2216,8 +2345,7 @@ input[type=button]:hover,
 .navigation-post a:hover,
 .navigation-paging a:hover {
   text-decoration: none;
-  -webkit-box-shadow: inset 0 -5em 0 0 rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 -5em 0 0 rgba(0, 0, 0, 0.1);
+  background: var(--hw-color-accent-hover);
 }
 input[type=submit]:active,
 .button:active,
@@ -2225,8 +2353,7 @@ input[type=button]:active,
 .navigation-post a:active,
 .navigation-paging a:active {
   -webkit-transform: translateY(0.075em);
-  -webkit-box-shadow: inset 0 -5em 0 0 rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 -5em 0 0 rgba(0, 0, 0, 0.1);
+  background: var(--hw-color-accent-hover);
 }
 
 /**
@@ -2235,7 +2362,7 @@ input[type=button]:active,
 hr {
   height: 1px;
   border: 0;
-  background: #666A76;
+  background: var(--hw-color-text);
   filter: alpha(opacity=20);
   -moz-opacity: 0.2;
   -khtml-opacity: 0.2;
@@ -2251,7 +2378,7 @@ table th, table td {
   padding-left: 0;
 }
 table tr th, table tr td {
-  border-bottom: 0.134em solid rgba(0, 0, 0, 0.05);
+  border-bottom: 0.134em solid var(--hw-color-border);
 }
 
 img {
@@ -2273,7 +2400,7 @@ img.wp-smiley {
   margin-left: -1.125em;
   margin-right: -1.125em;
   margin-bottom: 4.209em;
-  background-color: #53a1b8;
+  background-color: var(--hw-color-accent);
   background-position: center center;
   background-repeat: no-repeat;
 }
@@ -2284,7 +2411,7 @@ img.wp-smiley {
 }
 
 .site-intro {
-  color: #fff;
+  color: var(--hw-color-on-accent);
 }
 .site-intro:hover {
   text-decoration: none;
@@ -2303,17 +2430,17 @@ img.wp-smiley {
 }
 
 .site-title, .site-description {
-  color: #fff;
+  color: var(--hw-color-on-accent);
 }
 .site-title a, .site-description a {
-  color: #fff;
+  color: var(--hw-color-on-accent);
 }
 
 .site-title {
   font-size: 2.665em;
   letter-spacing: -1px;
   font-weight: 300;
-  color: #fff;
+  color: var(--hw-color-on-accent);
   margin-bottom: 0;
 }
 
@@ -2336,9 +2463,9 @@ ul.menu {
 }
 
 .main-nav {
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid var(--hw-color-border);
   margin-bottom: 2.618em;
-  background: #f8f8f9;
+  background: var(--hw-color-surface);
 }
 .main-nav .buttons {
   padding: 1.777em 1.125em;
@@ -2418,19 +2545,19 @@ img.wp-post-image {
  * Comments
  */
 .comments .bypostauthor > .comment-body .comment-content {
-  background: #53a1b8;
+  background: var(--hw-color-accent);
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: #fff;
+  color: var(--hw-color-on-accent);
 }
 .comments .bypostauthor > .comment-body .comment-content:after {
-  border-color: transparent transparent #53a1b8 transparent;
+  border-color: transparent transparent var(--hw-color-accent) transparent;
 }
 .comments .bypostauthor > .comment-body .comment-content:before {
   display: none;
 }
 .comments .bypostauthor > .comment-body .comment-content a {
-  color: #f8f8f9;
+  color: var(--hw-color-on-accent);
   text-decoration: underline;
 }
 .comments .bypostauthor > .comment-body .comment-content a:hover {
@@ -2438,8 +2565,8 @@ img.wp-post-image {
 }
 .comments .comment-content {
   padding: 1em;
-  -webkit-box-shadow: 0 0 0 0.134em rgba(0, 0, 0, 0.05);
-  box-shadow: 0 0 0 0.134em rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 0 0 0.134em var(--hw-color-shadow);
+  box-shadow: 0 0 0 0.134em var(--hw-color-shadow);
   -webkit-border-radius: 0.201em;
   border-radius: 0.201em;
   margin-bottom: 1em;
@@ -2457,12 +2584,12 @@ img.wp-post-image {
   position: absolute;
   top: -1.6em;
   left: 0.844em;
-  border: 0.75em solid rgba(0, 0, 0, 0.05);
-  border-color: transparent transparent rgba(0, 0, 0, 0.05) transparent;
+  border: 0.75em solid var(--hw-color-shadow);
+  border-color: transparent transparent var(--hw-color-shadow) transparent;
 }
 .comments .comment-content:after {
   margin-top: 0.201em;
-  border-color: transparent transparent #f8f8f9 transparent;
+  border-color: transparent transparent var(--hw-color-surface) transparent;
 }
 .comments .comment-author .comment-meta {
   font-size: 0.844em;
@@ -2516,7 +2643,7 @@ img.wp-post-image {
     padding-right: 999em;
     margin-left: -999em;
     margin-right: -999em;
-    background-color: #53a1b8;
+    background-color: var(--hw-color-accent);
   }
   .background-contrast .header {
     margin-left: -3.157em;
@@ -2541,7 +2668,7 @@ img.wp-post-image {
     font-size: 4.209em;
     letter-spacing: -2px;
     font-weight: 300;
-    color: #fff;
+    color: var(--hw-color-on-accent);
     margin-bottom: 0;
   }
   .site-intro .avatar {
@@ -2566,7 +2693,7 @@ img.wp-post-image {
    */
   .main-nav {
     border-right: 0;
-    border-bottom: 0.422em solid #53a1b8;
+    border-bottom: 0.422em solid var(--hw-color-accent);
     margin-bottom: 0;
   }
   .main-nav li {
@@ -2579,8 +2706,8 @@ img.wp-post-image {
     display: block;
   }
   .main-nav ul.menu > li:hover > a, .main-nav ul.menu > li > a:hover {
-    background-color: #53a1b8;
-    color: #fff;
+    background-color: var(--hw-color-accent);
+    color: var(--hw-color-on-accent);
   }
   .main-nav ul.menu > li.current-menu-item > a {
     position: relative;
@@ -2592,9 +2719,9 @@ img.wp-post-image {
     bottom: 0;
     left: 50%;
     margin-left: -0.563em;
-    color: #53a1b8;
-    border: 0.563em solid #53a1b8;
-    border-color: transparent transparent #53a1b8 transparent;
+    color: var(--hw-color-accent);
+    border: 0.563em solid var(--hw-color-accent);
+    border-color: transparent transparent var(--hw-color-accent) transparent;
   }
   .main-nav ul.menu > li.parent > a {
     position: relative;
@@ -2632,7 +2759,7 @@ img.wp-post-image {
   }
   .main-nav ul.menu ul {
     width: 14.949em;
-    background-color: rgb(55.6604938272, 116.8086419753, 134.8395061728);
+    background-color: var(--hw-color-accent-hover);
     -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
   }
@@ -2665,7 +2792,7 @@ img.wp-post-image {
   }
   .main-nav ul.menu ul a {
     padding: 0.475em 1.125em;
-    color: #fff;
+    color: var(--hw-color-on-accent);
   }
   .main-nav ul.menu {
     /* THIRD LEVEL AND DEEPER */
@@ -2780,5 +2907,5 @@ img.wp-post-image {
   line-height: 2.9 !important;
   font-size: 1rem !important;
   pointer-events: none !important;
-  color: #666A76 !important;
+  color: var(--hw-color-text) !important;
 }

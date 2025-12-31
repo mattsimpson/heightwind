@@ -33,6 +33,7 @@ HeightWind is distributed under the terms of the GNU GPL
 @use 'framework/scss/mixins' as *;
 @use 'framework/scss/normalize';
 @use 'framework/scss/grid' as *;
+@use 'framework/scss/color-scheme';
 @use 'framework/scss/core';
 
 
@@ -46,8 +47,8 @@ html {
 
 body {
 	line-height: 1.5em;
-	color: $color_body;
-	background: $color_bg;
+	color: var(--hw-color-text);
+	background: var(--hw-color-bg);
 	font-size:1em;
 }
 
@@ -57,7 +58,7 @@ body {
  */
 .inner-wrap {
 	padding: 0 1.125em;
-	background-color: $color_bg;
+	background-color: var(--hw-color-surface);
 }
 
 
@@ -68,7 +69,7 @@ h1, h2, h3, h4, h5, h6, .heading, .omega, .psi, .alpha, .beta, .gamma, .delta {
 	font-weight: 400;
 	margin:0;
 	margin-bottom:1rem;
-	color: #444854;
+	color: var(--hw-color-heading);
 	line-height: 1.333;
 	position: relative;
 	text-align: left;
@@ -170,7 +171,7 @@ acronym, abbr[title] {
 }
 
 ins {
-	border-bottom:1px solid rgba(0,0,0,0.1);
+	border-bottom:1px solid var(--hw-color-border);
 	text-decoration: none;
 }
 
@@ -206,13 +207,13 @@ blockquote {
 }
 
 code, pre {
-	background: rgba(0,0,0,0.05);
+	background: var(--hw-color-code-bg);
 	padding:0.1em 0.201em;
 	@include border_radius(0.201em);
-	color: #dc5494;
+	color: var(--hw-color-code-text);
 	margin:0 .201em;
 	padding:0 .201em;
-	border:1px solid rgba(0,0,0,0.1);
+	border:1px solid var(--hw-color-border);
 	font-weight: 600;
 }
 
@@ -249,7 +250,7 @@ ol > li:last-child {
  * Anchors
  */
 a {
-	color: $color_theme;
+	color: var(--hw-color-accent);
 	text-decoration: none;
 	&:hover {
 		text-decoration: underline;
@@ -266,8 +267,8 @@ a.more-link {
  */
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], input.input-text, textarea {
 	padding:.844em;
-	background: rgba(0,0,0,0.05);
-	color: $color_body;
+	background: var(--hw-color-input-bg);
+	color: var(--hw-color-text);
 	border:0;
 	@include border_radius;
 	outline: none;
@@ -282,8 +283,8 @@ input[type="radio"] {
     width:1.5em;
     @include borderbox;
     font-size: .844em;
-    border:.422em solid $color_body;
-    background: $color_body;
+    border:.422em solid var(--hw-color-text);
+    background: var(--hw-color-text);
     cursor:pointer;
     position:relative;
     @include border_radius(100%);
@@ -303,7 +304,7 @@ input[type="checkbox"] {
     cursor:pointer;
     position:relative;
     @include border_radius();
-    background-color:$color_body;
+    background-color:var(--hw-color-text);
     margin-right:1em;
     font-size: .844em;
 }
@@ -318,7 +319,7 @@ input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
     font-weight: 900;
     line-height: 1.5;
     content: "\f00c";
-    color: $color_bg;
+    color: var(--hw-color-bg);
     @include opacity(0.1);
     @include transition;
 }
@@ -332,25 +333,19 @@ input[type="button"],
 .navigation-post a,
 .navigation-paging a {
 	padding:.844em 1.125em;
-	color: $color_bg;
+	color: var(--hw-color-on-accent);
 	font-weight: 600;
-	background:$color_theme;
+	background: var(--hw-color-accent);
 	@include border_radius();
 	border:0;
 	@include transition;
 	&:hover {
 		text-decoration: none;
-		-webkit-box-shadow:
-			inset 0 -5em 0 0 rgba(0,0,0,0.1);
-		box-shadow:
-			inset 0 -5em 0 0 rgba(0,0,0,0.1);
+		background: var(--hw-color-accent-hover);
 	}
 	&:active {
 		-webkit-transform:translateY(.075em);
-		-webkit-box-shadow:
-			inset 0 -5em 0 0 rgba(0,0,0,0.1);
-		box-shadow:
-			inset 0 -5em 0 0 rgba(0,0,0,0.1);
+		background: var(--hw-color-accent-hover);
 	}
 }
 
@@ -361,7 +356,7 @@ input[type="button"],
 hr {
 	height:1px;
 	border:0;
-	background: $color_body;
+	background: var(--hw-color-text);
 	@include opacity(0.2);
 }
 table {
@@ -373,7 +368,7 @@ table {
 	}
 	tr {
 		th, td {
-			border-bottom:.134em solid rgba(0,0,0,0.05);
+			border-bottom:.134em solid var(--hw-color-border);
 		}
 	}
 }
@@ -396,7 +391,7 @@ img {
 	margin-left:-1.125em;
 	margin-right:-1.125em;
 	margin-bottom:4.209em;
-	background-color:$color_theme;
+	background-color: var(--hw-color-accent);
 	background-position:center center;
 	background-repeat:no-repeat;
 	p.toggle-container {
@@ -406,7 +401,7 @@ img {
 	}
 }
 .site-intro {
-	color: #fff;
+	color: var(--hw-color-on-accent);
 	&:hover {
 		text-decoration: none;
 	}
@@ -422,14 +417,14 @@ img {
 	}
 }
 .site-title, .site-description {
-	color: #fff;
+	color: var(--hw-color-on-accent);
 	a {
-		color: #fff;
+		color: var(--hw-color-on-accent);
 	}
 }
 .site-title {
 	@include psi;
-	color: #fff;
+	color: var(--hw-color-on-accent);
 	margin-bottom:0;
 }
 .site-description {
@@ -448,9 +443,9 @@ ul.menu {
 	padding-top:1.777em;
 }
 .main-nav {
-	border-right:1px solid rgba(0,0,0,0.1);
+	border-right:1px solid var(--hw-color-border);
 	margin-bottom: 2.618em;
-	background: $color_bg;
+	background: var(--hw-color-surface);
 	.buttons {
 		padding: 1.777em 1.125em;
 	}
@@ -531,18 +526,18 @@ img.wp-post-image {
 .comments {
 	.bypostauthor {
 		> .comment-body .comment-content {
-			background: $color_theme;
+			background: var(--hw-color-accent);
 			-webkit-box-shadow: none;
 			box-shadow:			none;
-			color: #fff;
+			color: var(--hw-color-on-accent);
 			&:after {
-				border-color: transparent transparent $color_theme transparent;
+				border-color: transparent transparent var(--hw-color-accent) transparent;
 			}
 			&:before {
 				display: none;
 			}
 			a {
-				color: $color_bg;
+				color: var(--hw-color-on-accent);
 				text-decoration: underline;
 				&:hover {
 					text-decoration: none;
@@ -552,7 +547,7 @@ img.wp-post-image {
 	}
 	.comment-content {
 		padding:1em;
-		@include box_shadow(0,0,0,.134em,rgba(0,0,0,0.05));
+		@include box_shadow(0,0,0,.134em,var(--hw-color-shadow));
 		@include border_radius;
 		margin-bottom:1em;
 		position: relative;
@@ -568,12 +563,12 @@ img.wp-post-image {
 			position: absolute;
 			top:-1.6em;
 			left:.844em;
-			border:.75em solid rgba(0,0,0,0.05);
-			border-color: transparent transparent rgba(0,0,0,0.05) transparent;
+			border:.75em solid var(--hw-color-shadow);
+			border-color: transparent transparent var(--hw-color-shadow) transparent;
 		}
 		&:after {
 			margin-top:.201em;
-			border-color: transparent transparent $color_bg transparent;
+			border-color: transparent transparent var(--hw-color-surface) transparent;
 		}
 	}
 	.comment-author {
@@ -665,7 +660,7 @@ img.wp-post-image {
 		padding-right:999em;
 		margin-left:-999em;
 		margin-right:-999em;
-		background-color: $color_theme;
+		background-color: var(--hw-color-accent);
 
 	}
 	.background-contrast {
@@ -695,7 +690,7 @@ img.wp-post-image {
 	}
 	.site-title {
 		@include omega;
-		color: #fff;
+		color: var(--hw-color-on-accent);
 		margin-bottom:0;
 	}
 	.site-intro {
@@ -721,7 +716,7 @@ img.wp-post-image {
 	 */
 	.main-nav {
 		border-right:0;
-        border-bottom:.422em solid $color_theme;
+        border-bottom:.422em solid var(--hw-color-accent);
 		margin-bottom:0;
 		li {
 			padding:0;
@@ -735,8 +730,8 @@ img.wp-post-image {
 		ul.menu {
 			> li {
 				&:hover > a, > a:hover {
-		        	background-color: $color_theme;
-		        	color: #fff;
+		        	background-color: var(--hw-color-accent);
+		        	color: var(--hw-color-on-accent);
 		        }
 		        &.current-menu-item > a {
 		        	position: relative;
@@ -747,9 +742,9 @@ img.wp-post-image {
 		        		bottom:0;
 		        		left:50%;
 		        		margin-left:-.563em;
-		        		color: $color_theme;
-		        		border:.563em solid $color_theme;
-		        		border-color:transparent transparent $color_theme transparent;
+		        		color: var(--hw-color-accent);
+		        		border:.563em solid var(--hw-color-accent);
+		        		border-color:transparent transparent var(--hw-color-accent) transparent;
 		        	}
 		        }
 		        &.parent { // Styles applied to all parent list items
@@ -777,7 +772,7 @@ img.wp-post-image {
 		    /* CHILDREN */
 		    ul {
 		        width:14.949em;
-		        background-color: color.adjust($color_theme, $lightness: -15%);
+		        background-color: var(--hw-color-accent-hover);
 		        @include box_shadow(0,1px,1px,0,rgba(0,0,0,0.2));
 		        li {
 		        	&.parent {
@@ -803,7 +798,7 @@ img.wp-post-image {
 		        }
 		        a {
 	        		padding:.475em 1.125em;
-	        		color: #fff;
+	        		color: var(--hw-color-on-accent);
 	        	}
 		    }
 		    /* THIRD LEVEL AND DEEPER */
@@ -922,7 +917,7 @@ img.wp-post-image {
 			line-height: 2.9 !important;
 			font-size: 1rem !important;
 			pointer-events: none !important;
-			color: $color_body !important;
+			color: var(--hw-color-text) !important;
 		}
 	}
 }
