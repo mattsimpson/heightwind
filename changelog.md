@@ -1,5 +1,13 @@
 # HeightWind Changelog
 
+## 2025-12-30 - 2.1.0
+* Feature - Added light/dark color scheme support with admin controls in Customizer
+* Feature - Added front-end color scheme toggle for visitors (sun/moon icons)
+* Feature - Color scheme respects system preference when set to Auto
+* Feature - User color scheme preference persists via localStorage
+* Update - Replaced legacy color controls with new Color Scheme section
+* Update - Converted hardcoded colors to CSS custom properties for theming
+
 ## 2025-10-13 - 2.0.0
 * Major - Modernized and rebranded Highwind as HeightWind
 * Update - Upgraded FontAwesome from 4.0.3 to 7.0.0 Free

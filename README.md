@@ -1,6 +1,6 @@
 # HeightWind
 
-**Version 2.0.0** - A modern WordPress theme for developers
+**Version 2.1.0** - A modern WordPress theme for developers
 
 HeightWind is a lightweight WordPress theme with a clean, responsive design and strong focus on typography. Originally created by [James Koster](http://jameskoster.co.uk) as **Highwind**, this modernized version is maintained by [Matt Simpson](https://mattsimpson.ca).
 
@@ -160,19 +160,19 @@ npm run build:dist
 This command will:
 1. Compile all CSS and JavaScript files
 2. Create a `dist/` folder with only production files (no node_modules, .git, development files)
-3. Generate a `heightwind-2.0.0.zip` file ready for deployment
+3. Generate a `heightwind-2.1.0.zip` file ready for deployment
 
 ### Installing on WordPress
 
 **Option 1: Upload ZIP via WordPress Admin**
 1. Run `npm run build:dist`
 2. Go to WordPress Admin > Appearance > Themes > Add New > Upload Theme
-3. Upload the generated `heightwind-2.0.0.zip` file
+3. Upload the generated `heightwind-2.1.0.zip` file
 4. Activate the theme
 
 **Option 2: Manual Installation**
 1. Run `npm run build:dist`
-2. Extract `heightwind-2.0.0.zip`
+2. Extract `heightwind-2.1.0.zip`
 3. Upload the `heightwind/` folder to your WordPress site's `wp-content/themes/` directory
 4. Activate via WordPress Admin > Appearance > Themes
 
