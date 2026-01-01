@@ -406,11 +406,18 @@ img {
 		text-decoration: none;
 	}
 	.avatar {
-		width:128px;
+		width: 128px;
 		height: auto;
 		display: block;
 		@include border_radius(100%);
 		@include box_shadow(0,0,0,.618em,rgba(0,0,0,0.05));
+	}
+	.custom-logo {
+		max-width: 256px;
+		max-height: 128px;
+		width: auto;
+		height: auto;
+		display: block;
 	}
 	.grav-clone {
 		display: none;
@@ -694,7 +701,8 @@ img.wp-post-image {
 		margin-bottom:0;
 	}
 	.site-intro {
-		.avatar {
+		.avatar,
+		.custom-logo {
 			margin:0 auto;
 			@include transition(all,ease,.4s);
 			&:hover {

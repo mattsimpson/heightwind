@@ -43,6 +43,16 @@ if ( ! function_exists( 'heightwind_setup' ) ) {
 		add_theme_support( 'custom-spacing' );
 		add_theme_support( 'custom-units' );
 
+		// Custom Logo
+		add_theme_support( 'custom-logo', array(
+			'height'               => 256,
+			'width'                => 256,
+			'flex-height'          => true,
+			'flex-width'           => true,
+			'header-text'          => array( 'site-title', 'site-description' ),
+			'unlink-homepage-logo' => false,
+		) );
+
 		// Editor Styles
 		add_action( 'init', 'heightwind_add_editor_styles' );
 

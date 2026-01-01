@@ -82,9 +82,10 @@ if ( ! function_exists( 'heightwind_color_scheme_toggle' ) ) {
 
 /**
  * Site title
- * Displays the gravatar, site title and description
+ * Displays the custom logo (or gravatar fallback), site title and description
  * Hooked into heightwind_header()
  * @since 2.0.0
+ * @since 2.1.0 - Added custom logo support
  */
 if ( ! function_exists( 'heightwind_site_title' ) ) {
 	function heightwind_site_title() {
@@ -92,8 +93,16 @@ if ( ! function_exists( 'heightwind_site_title' ) ) {
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="site-intro">
 				<?php
 					do_action( 'heightwind_site_title_link' );
-					if ( apply_filters( 'heightwind_header_gravatar', true ) ) {
-						echo get_avatar( apply_filters( 'heightwind_header_gravatar_email', $email = esc_attr( get_option( 'admin_email' ) ) ), 256, '', esc_attr( get_bloginfo( 'name' ) ) );
+
+					// Display custom logo if set, otherwise fall back to gravatar
+					if ( has_custom_logo() ) {
+						$custom_logo_id = get_theme_mod( 'custom_logo' );
+						echo wp_get_attachment_image( $custom_logo_id, 'full', false, array(
+							'class' => 'custom-logo',
+							'alt'   => get_bloginfo( 'name' ),
+						) );
+					} elseif ( apply_filters( 'heightwind_header_gravatar', true ) ) {
+						echo get_avatar( apply_filters( 'heightwind_header_gravatar_email', esc_attr( get_option( 'admin_email' ) ) ), 256, '', esc_attr( get_bloginfo( 'name' ) ) );
 					}
 				?>
 				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>

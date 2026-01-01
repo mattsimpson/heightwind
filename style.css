@@ -2425,6 +2425,13 @@ img.wp-smiley {
   -webkit-box-shadow: 0 0 0 0.618em rgba(0, 0, 0, 0.05);
   box-shadow: 0 0 0 0.618em rgba(0, 0, 0, 0.05);
 }
+.site-intro .custom-logo {
+  max-width: 256px;
+  max-height: 128px;
+  width: auto;
+  height: auto;
+  display: block;
+}
 .site-intro .grav-clone {
   display: none;
 }
@@ -2671,14 +2678,16 @@ img.wp-post-image {
     color: var(--hw-color-on-accent);
     margin-bottom: 0;
   }
-  .site-intro .avatar {
+  .site-intro .avatar,
+  .site-intro .custom-logo {
     margin: 0 auto;
     -webkit-transition: all ease 0.4s;
     -moz-transition: all ease 0.4s;
     -o-transition: all ease 0.4s;
     transition: all ease 0.4s;
   }
-  .site-intro .avatar:hover {
+  .site-intro .avatar:hover,
+  .site-intro .custom-logo:hover {
     position: relative;
     -webkit-transform: translateY(-0.75em);
     -moz-transform: translateY(-0.75em);
