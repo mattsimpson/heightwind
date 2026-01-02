@@ -58,7 +58,7 @@ if ( ! function_exists( 'heightwind_color_scheme_toggle' ) ) {
 		<div class="color-scheme-toggle" role="radiogroup" aria-label="<?php esc_attr_e( 'Color scheme', 'heightwind' ); ?>">
 			<button type="button" class="toggle-light" aria-label="<?php esc_attr_e( 'Light mode', 'heightwind' ); ?>" aria-pressed="true">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<circle cx="12" cy="12" r="5"/>
+					<circle cx="12" cy="12" r="5" fill="currentColor"/>
 					<line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 					<line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 					<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
