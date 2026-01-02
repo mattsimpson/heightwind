@@ -241,17 +241,6 @@ class HeightWindOptions {
     }
 
 
-    /**
-     * Legacy render method - no longer outputs CSS
-     *
-     * @since 2.0.0
-     * @since 2.1.0 - Removed legacy color output, now handled by Color Scheme system
-     */
-    public static function heightwind_render() {
-        // Colors are now managed via heightwind_color_scheme_css()
-        return;
-    }
-
 }
 
 
@@ -259,7 +248,7 @@ class HeightWindOptions {
  * Custom background support
  *
  * @since 2.0.0
- * @since 2.1.0 - Background colors now managed by Color Scheme system
+ * @deprecated 2.1.0 Background colors now managed by Color Scheme system
  */
 function heightwind_custom_background() {
     // Background colors are now handled by the Color Scheme system
@@ -397,24 +386,41 @@ add_action( 'customize_preview_init', 'heightwind_customize_preview_js' );
 
 
 /**
+ * Enqueue Customizer controls script
+ *
+ * @since 2.1.0
+ */
+function heightwind_customize_controls_js() {
+    wp_enqueue_script(
+        'heightwind-customizer-controls',
+        get_template_directory_uri() . '/framework/js/customizer-controls.js',
+        array( 'customize-controls', 'jquery' ),
+        '2.1.0',
+        true
+    );
+}
+add_action( 'customize_controls_enqueue_scripts', 'heightwind_customize_controls_js' );
+
+
+/**
  * Output color scheme CSS custom properties
  *
  * @since 2.1.0
  */
 function heightwind_color_scheme_css() {
-    // Get light scheme colors
-    $light_bg      = get_theme_mod( 'heightwind_light_bg', '#f8f8f9' );
-    $light_surface = get_theme_mod( 'heightwind_light_surface', '#ffffff' );
-    $light_text    = get_theme_mod( 'heightwind_light_text', '#666A76' );
-    $light_heading = get_theme_mod( 'heightwind_light_heading', '#444854' );
-    $light_accent  = get_theme_mod( 'heightwind_light_accent', '#53a1b8' );
+    // Get light scheme colors with sanitization (use defaults if invalid)
+    $light_bg      = sanitize_hex_color( get_theme_mod( 'heightwind_light_bg', '#f8f8f9' ) ) ?: '#f8f8f9';
+    $light_surface = sanitize_hex_color( get_theme_mod( 'heightwind_light_surface', '#ffffff' ) ) ?: '#ffffff';
+    $light_text    = sanitize_hex_color( get_theme_mod( 'heightwind_light_text', '#666A76' ) ) ?: '#666A76';
+    $light_heading = sanitize_hex_color( get_theme_mod( 'heightwind_light_heading', '#444854' ) ) ?: '#444854';
+    $light_accent  = sanitize_hex_color( get_theme_mod( 'heightwind_light_accent', '#53a1b8' ) ) ?: '#53a1b8';
 
-    // Get dark scheme colors
-    $dark_bg      = get_theme_mod( 'heightwind_dark_bg', '#1a1a2e' );
-    $dark_surface = get_theme_mod( 'heightwind_dark_surface', '#16213e' );
-    $dark_text    = get_theme_mod( 'heightwind_dark_text', '#e0e0e0' );
-    $dark_heading = get_theme_mod( 'heightwind_dark_heading', '#ffffff' );
-    $dark_accent  = get_theme_mod( 'heightwind_dark_accent', '#6bc5db' );
+    // Get dark scheme colors with sanitization (use defaults if invalid)
+    $dark_bg      = sanitize_hex_color( get_theme_mod( 'heightwind_dark_bg', '#1a1a2e' ) ) ?: '#1a1a2e';
+    $dark_surface = sanitize_hex_color( get_theme_mod( 'heightwind_dark_surface', '#16213e' ) ) ?: '#16213e';
+    $dark_text    = sanitize_hex_color( get_theme_mod( 'heightwind_dark_text', '#e0e0e0' ) ) ?: '#e0e0e0';
+    $dark_heading = sanitize_hex_color( get_theme_mod( 'heightwind_dark_heading', '#ffffff' ) ) ?: '#ffffff';
+    $dark_accent  = sanitize_hex_color( get_theme_mod( 'heightwind_dark_accent', '#6bc5db' ) ) ?: '#6bc5db';
 
     // Calculate accent hover colors (slightly lighter/darker)
     $light_accent_hover = heightwind_adjust_brightness( $light_accent, -15 );
@@ -460,7 +466,7 @@ add_action( 'wp_head', 'heightwind_color_scheme_css', 100 );
 
 
 /**
- * Adjust color brightness
+ * Adjust color brightness using HSL color space
  *
  * @since 2.1.0
  * @param string $hex Hex color code
@@ -468,18 +474,136 @@ add_action( 'wp_head', 'heightwind_color_scheme_css', 100 );
  * @return string Adjusted hex color
  */
 function heightwind_adjust_brightness( $hex, $steps ) {
+    // Handle null or empty input
+    if ( empty( $hex ) ) {
+        return '#000000';
+    }
+
     // Remove # if present
     $hex = ltrim( $hex, '#' );
+
+    // Expand shorthand form (#abc) to full form (#aabbcc)
+    if ( strlen( $hex ) === 3 ) {
+        $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+    }
+
+    if ( strlen( $hex ) !== 6 ) {
+        return '#000000';
+    }
 
     // Convert to RGB
     $r = hexdec( substr( $hex, 0, 2 ) );
     $g = hexdec( substr( $hex, 2, 2 ) );
     $b = hexdec( substr( $hex, 4, 2 ) );
 
-    // Adjust
-    $r = max( 0, min( 255, $r + $steps ) );
-    $g = max( 0, min( 255, $g + $steps ) );
-    $b = max( 0, min( 255, $b + $steps ) );
+    // Convert RGB to HSL
+    $hsl = heightwind_rgb_to_hsl( $r, $g, $b );
 
-    return sprintf( '#%02x%02x%02x', $r, $g, $b );
+    // Map steps (-255..255) to lightness adjustment (-1..1)
+    $delta_l = $steps / 255;
+    $hsl['l'] = max( 0, min( 1, $hsl['l'] + $delta_l ) );
+
+    // Convert back to RGB
+    $rgb = heightwind_hsl_to_rgb( $hsl['h'], $hsl['s'], $hsl['l'] );
+
+    return sprintf( '#%02x%02x%02x', $rgb['r'], $rgb['g'], $rgb['b'] );
+}
+
+/**
+ * Convert RGB to HSL
+ *
+ * @since 2.1.0
+ * @param int $r Red (0-255)
+ * @param int $g Green (0-255)
+ * @param int $b Blue (0-255)
+ * @return array Array with h (0-360), s (0-1), l (0-1)
+ */
+function heightwind_rgb_to_hsl( $r, $g, $b ) {
+    $r /= 255;
+    $g /= 255;
+    $b /= 255;
+
+    $max = max( $r, $g, $b );
+    $min = min( $r, $g, $b );
+    $l = ( $max + $min ) / 2;
+
+    if ( $max === $min ) {
+        $h = 0;
+        $s = 0;
+    } else {
+        $d = $max - $min;
+        $s = $l > 0.5 ? $d / ( 2 - $max - $min ) : $d / ( $max + $min );
+
+        if ( $max === $r ) {
+            $h = ( $g - $b ) / $d + ( $g < $b ? 6 : 0 );
+        } elseif ( $max === $g ) {
+            $h = ( $b - $r ) / $d + 2;
+        } else {
+            $h = ( $r - $g ) / $d + 4;
+        }
+
+        $h *= 60;
+    }
+
+    return array(
+        'h' => $h,
+        's' => $s,
+        'l' => $l,
+    );
+}
+
+/**
+ * Convert HSL to RGB
+ *
+ * @since 2.1.0
+ * @param float $h Hue in degrees (0-360)
+ * @param float $s Saturation (0-1)
+ * @param float $l Lightness (0-1)
+ * @return array Array with r, g, b (0-255)
+ */
+function heightwind_hsl_to_rgb( $h, $s, $l ) {
+    if ( $s === 0 ) {
+        $r = $g = $b = $l; // achromatic
+    } else {
+        $c = ( 1 - abs( 2 * $l - 1 ) ) * $s;
+        $hh = fmod( $h, 360 ) / 60;
+        $x = $c * ( 1 - abs( fmod( $hh, 2 ) - 1 ) );
+        $m = $l - $c / 2;
+
+        if ( $hh >= 0 && $hh < 1 ) {
+            $r = $c;
+            $g = $x;
+            $b = 0;
+        } elseif ( $hh >= 1 && $hh < 2 ) {
+            $r = $x;
+            $g = $c;
+            $b = 0;
+        } elseif ( $hh >= 2 && $hh < 3 ) {
+            $r = 0;
+            $g = $c;
+            $b = $x;
+        } elseif ( $hh >= 3 && $hh < 4 ) {
+            $r = 0;
+            $g = $x;
+            $b = $c;
+        } elseif ( $hh >= 4 && $hh < 5 ) {
+            $r = $x;
+            $g = 0;
+            $b = $c;
+        } else {
+            $r = $c;
+            $g = 0;
+            $b = $x;
+        }
+
+        $r = $r + $m;
+        $g = $g + $m;
+        $b = $b + $m;
+    }
+
+    return array(
+        'r' => round( max( 0, min( 1, $r ) ) * 255 ),
+        'g' => round( max( 0, min( 1, $g ) ) * 255 ),
+        'b' => round( max( 0, min( 1, $b ) ) * 255 ),
+    );
 }

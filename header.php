@@ -19,8 +19,26 @@
 	<script>
 	(function() {
 		// Skip localStorage override when in Customizer preview
-		var isCustomizerPreview = window.parent && window.parent.wp && window.parent.wp.customize;
-		var stored = isCustomizerPreview ? null : localStorage.getItem('heightwind-user-scheme');
+		var isCustomizerPreview = false;
+		try {
+			if (window && window.parent && window.parent !== window && window.parent.wp && window.parent.wp.customize) {
+				isCustomizerPreview = true;
+			}
+		} catch (e) {
+			// Accessing window.parent or its properties can throw in cross-origin iframes.
+			isCustomizerPreview = false;
+		}
+
+		var stored = null;
+		if (!isCustomizerPreview) {
+			try {
+				if (window && window.localStorage) {
+					stored = localStorage.getItem('heightwind-user-scheme');
+				}
+			} catch (e) {
+				stored = null;
+			}
+		}
 		var admin = '<?php echo esc_js( get_theme_mod( 'heightwind_color_scheme', 'auto' ) ); ?>';
 		var scheme = stored || admin;
 		document.documentElement.setAttribute('data-color-scheme', scheme);

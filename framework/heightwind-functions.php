@@ -133,12 +133,12 @@ if ( ! function_exists( 'heightwind_register_block_patterns' ) ) {
 				'description' => __( 'A cover block with heading, paragraph, and button.', 'heightwind' ),
 				'categories'  => array( 'heightwind', 'featured' ),
 				'content'     => '<!-- wp:cover {"overlayColor":"accent","minHeight":400,"align":"full"} -->
-<div class="wp-block-cover alignfull" style="min-height:400px"><span aria-hidden="true" class="wp-block-cover__background has-accent-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1,"style":{"color":{"text":"#ffffff"}}} -->
-<h1 class="wp-block-heading has-text-align-center has-text-color" style="color:#ffffff">' . esc_html__( 'Welcome to Our Site', 'heightwind' ) . '</h1>
+<div class="wp-block-cover alignfull" style="min-height:400px"><span aria-hidden="true" class="wp-block-cover__background has-accent-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1,"textColor":"surface"} -->
+<h1 class="wp-block-heading has-text-align-center has-surface-color has-text-color">' . esc_html__( 'Welcome to Our Site', 'heightwind' ) . '</h1>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center","style":{"color":{"text":"#ffffff"}}} -->
-<p class="has-text-align-center has-text-color" style="color:#ffffff">' . esc_html__( 'Discover amazing content and explore what we have to offer. Start your journey with us today.', 'heightwind' ) . '</p>
+<!-- wp:paragraph {"align":"center","textColor":"surface"} -->
+<p class="has-text-align-center has-surface-color has-text-color">' . esc_html__( 'Discover amazing content and explore what we have to offer. Start your journey with us today.', 'heightwind' ) . '</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->

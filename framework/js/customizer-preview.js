@@ -159,22 +159,29 @@
 
         $style.text(css);
 
+        // Check if user has explicitly selected a scheme via the frontend toggle
+        var userScheme = document.documentElement.getAttribute('data-user-scheme');
+
+        // Use user's selection if available, otherwise use admin setting
+        var activeScheme = userScheme || currentScheme;
+
         // Update data-color-scheme attribute on html element
-        document.documentElement.setAttribute('data-color-scheme', currentScheme);
+        document.documentElement.setAttribute('data-color-scheme', activeScheme);
 
-        // Remove user scheme override for customizer preview
-        document.documentElement.removeAttribute('data-user-scheme');
-
-        // Remove localStorage override for preview
-        localStorage.removeItem('heightwind-user-scheme');
+        // Note: Don't remove data-user-scheme or localStorage here
+        // Those should only be cleared when the admin explicitly changes the scheme setting
     }
 
     // Color Scheme Mode binding
     wp.customize('heightwind_color_scheme', function(value) {
         value.bind(function(newval) {
             currentScheme = newval;
-            document.documentElement.setAttribute('data-color-scheme', newval);
+
+            // Admin is explicitly changing the scheme, clear user override
             document.documentElement.removeAttribute('data-user-scheme');
+            localStorage.removeItem('heightwind-user-scheme');
+
+            document.documentElement.setAttribute('data-color-scheme', newval);
 
             // Trigger the HeightWindColorScheme if it exists
             if (window.HeightWindColorScheme) {
@@ -258,33 +265,183 @@
     });
 
     /**
-     * Adjust color brightness
+     * Adjust color brightness using HSL color space
      *
      * @param {string} hex Hex color code
      * @param {number} steps Steps to adjust (-255 to 255)
      * @returns {string} Adjusted hex color
      */
     function adjustBrightness(hex, steps) {
-        if (!hex) return '#000000';
+        if (!hex) {
+            return '#000000';
+        }
 
-        // Remove # if present
-        hex = hex.replace('#', '');
+        // Normalize and remove leading '#'
+        hex = String(hex).trim();
+        if (hex.charAt(0) === '#') {
+            hex = hex.slice(1);
+        }
 
-        // Convert to RGB
+        // Expand shorthand form (#abc) to full form (#aabbcc)
+        if (hex.length === 3) {
+            hex = hex.charAt(0) + hex.charAt(0) +
+                hex.charAt(1) + hex.charAt(1) +
+                hex.charAt(2) + hex.charAt(2);
+        }
+
+        if (hex.length !== 6) {
+            // Invalid hex format, fallback
+            return '#000000';
+        }
+
+        var rgb = hexToRgb(hex);
+        if (!rgb) {
+            return '#000000';
+        }
+
+        var hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+
+        // Map steps (-255..255) to lightness adjustment (-1..1)
+        var deltaL = steps / 255;
+        hsl.l = Math.max(0, Math.min(1, hsl.l + deltaL));
+
+        var adjustedRgb = hslToRgb(hsl.h, hsl.s, hsl.l);
+
+        // Convert back to hex
+        var rHex = ('0' + adjustedRgb.r.toString(16)).slice(-2);
+        var gHex = ('0' + adjustedRgb.g.toString(16)).slice(-2);
+        var bHex = ('0' + adjustedRgb.b.toString(16)).slice(-2);
+
+        return '#' + rHex + gHex + bHex;
+    }
+
+    /**
+     * Convert hex color (without #) to RGB object.
+     *
+     * @param {string} hex Hex color string (e.g. 'aabbcc')
+     * @returns {{r:number,g:number,b:number}|null}
+     */
+    function hexToRgb(hex) {
+        if (!hex || hex.length !== 6) {
+            return null;
+        }
         var r = parseInt(hex.substring(0, 2), 16);
         var g = parseInt(hex.substring(2, 4), 16);
         var b = parseInt(hex.substring(4, 6), 16);
 
-        // Adjust
-        r = Math.max(0, Math.min(255, r + steps));
-        g = Math.max(0, Math.min(255, g + steps));
-        b = Math.max(0, Math.min(255, b + steps));
+        if (isNaN(r) || isNaN(g) || isNaN(b)) {
+            return null;
+        }
 
-        // Convert back to hex
-        return '#' +
-            ('0' + r.toString(16)).slice(-2) +
-            ('0' + g.toString(16)).slice(-2) +
-            ('0' + b.toString(16)).slice(-2);
+        return {
+            r: r,
+            g: g,
+            b: b
+        };
+    }
+
+    /**
+     * Convert RGB to HSL.
+     *
+     * @param {number} r Red (0-255)
+     * @param {number} g Green (0-255)
+     * @param {number} b Blue (0-255)
+     * @returns {{h:number,s:number,l:number}} h in [0,360), s,l in [0,1]
+     */
+    function rgbToHsl(r, g, b) {
+        r /= 255;
+        g /= 255;
+        b /= 255;
+
+        var max = Math.max(r, g, b);
+        var min = Math.min(r, g, b);
+        var h, s;
+        var l = (max + min) / 2;
+
+        if (max === min) {
+            h = 0;
+            s = 0;
+        } else {
+            var d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+            switch (max) {
+                case r:
+                    h = (g - b) / d + (g < b ? 6 : 0);
+                    break;
+                case g:
+                    h = (b - r) / d + 2;
+                    break;
+                default:
+                    h = (r - g) / d + 4;
+                    break;
+            }
+
+            h *= 60;
+        }
+
+        return {
+            h: h,
+            s: s,
+            l: l
+        };
+    }
+
+    /**
+     * Convert HSL to RGB.
+     *
+     * @param {number} h Hue in degrees [0,360)
+     * @param {number} s Saturation [0,1]
+     * @param {number} l Lightness [0,1]
+     * @returns {{r:number,g:number,b:number}} RGB values (0-255)
+     */
+    function hslToRgb(h, s, l) {
+        var r, g, b;
+
+        if (s === 0) {
+            r = g = b = l; // achromatic
+        } else {
+            var c = (1 - Math.abs(2 * l - 1)) * s;
+            var hh = (h % 360) / 60;
+            var x = c * (1 - Math.abs(hh % 2 - 1));
+            var m = l - c / 2;
+
+            if (hh >= 0 && hh < 1) {
+                r = c;
+                g = x;
+                b = 0;
+            } else if (hh >= 1 && hh < 2) {
+                r = x;
+                g = c;
+                b = 0;
+            } else if (hh >= 2 && hh < 3) {
+                r = 0;
+                g = c;
+                b = x;
+            } else if (hh >= 3 && hh < 4) {
+                r = 0;
+                g = x;
+                b = c;
+            } else if (hh >= 4 && hh < 5) {
+                r = x;
+                g = 0;
+                b = c;
+            } else {
+                r = c;
+                g = 0;
+                b = x;
+            }
+
+            r = r + m;
+            g = g + m;
+            b = b + m;
+        }
+
+        return {
+            r: Math.round(Math.max(0, Math.min(1, r)) * 255),
+            g: Math.round(Math.max(0, Math.min(1, g)) * 255),
+            b: Math.round(Math.max(0, Math.min(1, b)) * 255)
+        };
     }
 
 })(jQuery);

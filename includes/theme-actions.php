@@ -55,6 +55,5 @@ add_action( 'comment_form_top',             	'heightwind_move_textarea' );			 		
  * Options
  */
 add_action( 'customize_register',   			array( 'HeightWindOptions' , 'heightwind_register' ) );	// Register the options
-add_action( 'wp_head',              			array( 'HeightWindOptions' , 'heightwind_render' ) );	// Output the CSS
 add_action( 'after_setup_theme',    			'heightwind_custom_background' );						// Custom Background
 add_filter( 'body_class',           			'heightwind_layout_classes' );						// Layout classes based on options

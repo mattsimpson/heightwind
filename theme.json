@@ -10,6 +10,7 @@
 			"defaultDuotone": true,
 			"defaultGradients": true,
 			"defaultPalette": true,
+			"_comment": "Color palette uses CSS custom properties (--hw-color-*) which are defined in heightwind_color_scheme_css(). Fallback values ensure colors render in contexts where custom properties may not be loaded.",
 			"palette": [
 				{
 					"slug": "background",
