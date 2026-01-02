@@ -71,7 +71,7 @@ if ( ! function_exists( 'heightwind_color_scheme_toggle' ) ) {
 			</button>
 			<button type="button" class="toggle-dark" aria-label="<?php esc_attr_e( 'Dark mode', 'heightwind' ); ?>" aria-pressed="false">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
 				</svg>
 			</button>
 		</div>

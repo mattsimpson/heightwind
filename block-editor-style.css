@@ -55,7 +55,7 @@
 
 /* Links - Content links must be underlined for accessibility */
 .editor-styles-wrapper a {
-	color: #0073aa;
+	color: var(--wp--preset--color--accent, #0073aa);
 	text-decoration: underline;
 }
 
