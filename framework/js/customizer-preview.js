@@ -159,22 +159,29 @@
 
         $style.text(css);
 
+        // Check if user has explicitly selected a scheme via the frontend toggle
+        var userScheme = document.documentElement.getAttribute('data-user-scheme');
+
+        // Use user's selection if available, otherwise use admin setting
+        var activeScheme = userScheme || currentScheme;
+
         // Update data-color-scheme attribute on html element
-        document.documentElement.setAttribute('data-color-scheme', currentScheme);
+        document.documentElement.setAttribute('data-color-scheme', activeScheme);
 
-        // Remove user scheme override for customizer preview
-        document.documentElement.removeAttribute('data-user-scheme');
-
-        // Remove localStorage override for preview
-        localStorage.removeItem('heightwind-user-scheme');
+        // Note: Don't remove data-user-scheme or localStorage here
+        // Those should only be cleared when the admin explicitly changes the scheme setting
     }
 
     // Color Scheme Mode binding
     wp.customize('heightwind_color_scheme', function(value) {
         value.bind(function(newval) {
             currentScheme = newval;
-            document.documentElement.setAttribute('data-color-scheme', newval);
+
+            // Admin is explicitly changing the scheme, clear user override
             document.documentElement.removeAttribute('data-user-scheme');
+            localStorage.removeItem('heightwind-user-scheme');
+
+            document.documentElement.setAttribute('data-color-scheme', newval);
 
             // Trigger the HeightWindColorScheme if it exists
             if (window.HeightWindColorScheme) {
