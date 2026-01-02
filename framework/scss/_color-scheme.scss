@@ -106,10 +106,6 @@
         }
 
         &:focus {
-            outline: none;
-        }
-
-        &:focus-visible {
             outline: 2px solid var(--hw-color-accent);
             outline-offset: 1px;
         }

@@ -90,7 +90,8 @@ body {
  */
 
 a:focus {
-    outline: thin dotted;
+    outline: 2px solid var(--hw-color-accent);
+    outline-offset: 2px;
 }
 
 /**

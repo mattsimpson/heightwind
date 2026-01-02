@@ -255,6 +255,10 @@ a {
 	&:hover {
 		text-decoration: underline;
 	}
+	&:focus {
+		outline: 2px solid var(--hw-color-accent);
+		outline-offset: 2px;
+	}
 }
 
 a.more-link {
@@ -271,8 +275,12 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	color: var(--hw-color-text);
 	border:0;
 	@include border_radius;
-	outline: none;
 	@include borderbox;
+
+	&:focus {
+		outline: 2px solid var(--hw-color-accent);
+		outline-offset: 2px;
+	}
 }
 textarea {
 	padding:1em;

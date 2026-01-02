@@ -169,7 +169,11 @@ fieldset {
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea {
 	width:100%;
 	@include borderbox;
-	outline:none;
+
+	&:focus {
+		outline: 2px solid var(--hw-color-accent);
+		outline-offset: 2px;
+	}
 }
 
 input[type="submit"],
@@ -183,9 +187,17 @@ input[type="submit"],
 	&:hover {
 		text-decoration: none;
 	}
+	&:focus {
+		outline: 2px solid var(--hw-color-accent);
+		outline-offset: 2px;
+	}
 }
 select {
 	max-width:100%;
+	&:focus {
+		outline: 2px solid var(--hw-color-accent);
+		outline-offset: 2px;
+	}
 }
 
 
@@ -794,6 +806,11 @@ form.searchform {
 		    a {
 	            display: inline-block;
 	            @include borderbox;
+
+	            &:focus {
+	            	outline: 2px solid var(--hw-color-accent);
+	            	outline-offset: -2px;
+	            }
 	        }
 
 		    /* CHILDREN */
@@ -824,7 +841,8 @@ form.searchform {
 		        left:100%;
 		        top:0;
 		    }
-		    li:hover > ul {
+		    li:hover > ul,
+		    li:focus-within > ul {
 		        @include opacity(1);
 		        overflow: visible;
 		        visibility: visible;
