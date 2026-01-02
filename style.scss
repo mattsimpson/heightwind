@@ -911,7 +911,7 @@ img.wp-post-image {
 		}
 
 		&::before {
-			content: "\f002" !important;
+			content: "\\f002" !important;
 			font-family: "Font Awesome 7 Free" !important;
 			font-weight: 900 !important;
 			display: block !important;
@@ -928,4 +928,51 @@ img.wp-post-image {
 			color: var(--hw-color-text) !important;
 		}
 	}
+}
+
+
+/**
+ * Block Styles
+ * Custom styles registered via register_block_style()
+ * @since 2.1.0
+ */
+
+// Button: Outline style
+.wp-block-button.is-style-outline .wp-block-button__link {
+	background-color: transparent;
+	border: 2px solid currentColor;
+	color: var(--hw-color-accent);
+	&:hover {
+		background-color: var(--hw-color-accent);
+		color: var(--hw-color-on-accent);
+	}
+}
+
+// Image: Rounded style
+.wp-block-image.is-style-rounded img {
+	border-radius: 0.5rem;
+}
+
+// Image: Shadow style
+.wp-block-image.is-style-shadow img {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+// Quote: Large style
+.wp-block-quote.is-style-large {
+	font-size: 1.5em;
+	border-left-width: 4px;
+}
+
+// Separator: Thick style
+.wp-block-separator.is-style-thick {
+	border-bottom-width: 4px;
+}
+
+// Group: Card style
+.wp-block-group.is-style-card {
+	background-color: var(--hw-color-surface);
+	padding: 1.5rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }

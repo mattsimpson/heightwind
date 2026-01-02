@@ -66,6 +66,53 @@ if ( ! function_exists( 'heightwind_setup' ) ) {
 
 
 /**
+ * Register block styles
+ * Hooked into init
+ * @since 2.1.0
+ */
+if ( ! function_exists( 'heightwind_register_block_styles' ) ) {
+	function heightwind_register_block_styles() {
+		// Button: Outline style
+		register_block_style( 'core/button', array(
+			'name'  => 'outline',
+			'label' => __( 'Outline', 'heightwind' ),
+		) );
+
+		// Image: Rounded style
+		register_block_style( 'core/image', array(
+			'name'  => 'rounded',
+			'label' => __( 'Rounded', 'heightwind' ),
+		) );
+
+		// Image: Shadow style
+		register_block_style( 'core/image', array(
+			'name'  => 'shadow',
+			'label' => __( 'Shadow', 'heightwind' ),
+		) );
+
+		// Quote: Large style
+		register_block_style( 'core/quote', array(
+			'name'  => 'large',
+			'label' => __( 'Large', 'heightwind' ),
+		) );
+
+		// Separator: Thick style
+		register_block_style( 'core/separator', array(
+			'name'  => 'thick',
+			'label' => __( 'Thick', 'heightwind' ),
+		) );
+
+		// Group: Card style
+		register_block_style( 'core/group', array(
+			'name'  => 'card',
+			'label' => __( 'Card', 'heightwind' ),
+		) );
+	}
+}
+add_action( 'init', 'heightwind_register_block_styles' );
+
+
+/**
  * Enqueue scripts
  * Hooked into wp_enqueue_scripts()
  * @since 2.0.0
