@@ -2944,7 +2944,9 @@ img.wp-post-image {
 
 .wp-block-quote.is-style-large {
   font-size: 1.5em;
-  border-left-width: 4px;
+}
+.wp-block-quote.is-style-large::before {
+  font-size: 4em;
 }
 
 .wp-block-separator.is-style-thick {

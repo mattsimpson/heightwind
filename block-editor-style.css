@@ -80,7 +80,6 @@
 	margin: 0 0 1.777em 0;
 	padding-left: 1.777em;
 	border-left: none;
-	font-style: italic;
 	background: transparent;
 	opacity: 0.8;
 	position: relative;
@@ -92,10 +91,9 @@
 	float: left;
 	font-size: 3.157em;
 	font-family: Georgia, "Times New Roman", serif;
-	font-weight: normal;
+	font-weight: 900;
 	line-height: 1;
 	font-style: normal;
-	color: #333;
 }
 
 .editor-styles-wrapper blockquote p:last-child {
@@ -113,12 +111,36 @@
 /* WordPress Block Quote */
 .editor-styles-wrapper .wp-block-quote {
 	border-left: 0 !important;
-	padding-left: 1.75em !important;
+	padding-left: 1.777em !important;
+	opacity: 0.8;
+}
+
+.editor-styles-wrapper .wp-block-quote::before {
+	content: "\201C";
+	text-indent: -0.563em;
+	float: left;
+	font-size: 3.157em;
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: 900;
+	line-height: 1;
+	font-style: normal;
 }
 
 .editor-styles-wrapper .wp-block-quote p {
 	margin-bottom: 0;
-	margin-left: 1.75em;
+}
+
+.editor-styles-wrapper .wp-block-quote cite {
+	text-transform: uppercase;
+	font-style: normal;
+	letter-spacing: 1px;
+	font-size: 0.844em;
+	display: block;
+}
+
+.editor-styles-wrapper .wp-block-quote p + p cite,
+.editor-styles-wrapper .wp-block-quote p + cite {
+	margin-top: -1.777em;
 }
 
 /* Code */
@@ -313,7 +335,10 @@
 /* Quote: Large style */
 .editor-styles-wrapper .wp-block-quote.is-style-large {
 	font-size: 1.5em;
-	border-left-width: 4px;
+}
+
+.editor-styles-wrapper .wp-block-quote.is-style-large::before {
+	font-size: 4em;
 }
 
 /* Separator: Thick style */
