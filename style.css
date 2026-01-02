@@ -2902,7 +2902,7 @@ img.wp-post-image {
 }
 .wp-block-search .wp-block-search__button::before,
 .wp-block-search button.wp-block-search__button::before {
-  content: "\\f002" !important;
+  content: "\f002" !important;
   font-family: "Font Awesome 7 Free" !important;
   font-weight: 900 !important;
   display: block !important;
