@@ -2286,6 +2286,33 @@ a.more-link {
 }
 
 /**
+ * Content Links - Accessibility Requirement
+ * Links within content must be underlined to be distinguishable
+ * @see https://make.wordpress.org/themes/handbook/review/required/#3-accessibility
+ */
+.article-content a:not(.wp-block-button__link):not(.button),
+.entry-content a:not(.wp-block-button__link):not(.button),
+.comment-content a:not(.wp-block-button__link):not(.button),
+.widget_text a:not(.wp-block-button__link):not(.button),
+.wp-block-text a:not(.wp-block-button__link):not(.button),
+.textwidget a:not(.wp-block-button__link):not(.button) {
+  text-decoration: underline;
+}
+.article-content a:not(.wp-block-button__link):not(.button):hover, .article-content a:not(.wp-block-button__link):not(.button):focus,
+.entry-content a:not(.wp-block-button__link):not(.button):hover,
+.entry-content a:not(.wp-block-button__link):not(.button):focus,
+.comment-content a:not(.wp-block-button__link):not(.button):hover,
+.comment-content a:not(.wp-block-button__link):not(.button):focus,
+.widget_text a:not(.wp-block-button__link):not(.button):hover,
+.widget_text a:not(.wp-block-button__link):not(.button):focus,
+.wp-block-text a:not(.wp-block-button__link):not(.button):hover,
+.wp-block-text a:not(.wp-block-button__link):not(.button):focus,
+.textwidget a:not(.wp-block-button__link):not(.button):hover,
+.textwidget a:not(.wp-block-button__link):not(.button):focus {
+  text-decoration: none;
+}
+
+/**
  * Forms
  */
 input[type=text], input[type=password], input[type=email], input[type=search], input.input-text, textarea {

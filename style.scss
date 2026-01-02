@@ -265,6 +265,27 @@ a.more-link {
 	font-weight: 700;
 }
 
+/**
+ * Content Links - Accessibility Requirement
+ * Links within content must be underlined to be distinguishable
+ * @see https://make.wordpress.org/themes/handbook/review/required/#3-accessibility
+ */
+.article-content,
+.entry-content,
+.comment-content,
+.widget_text,
+.wp-block-text,
+.textwidget {
+	a:not(.wp-block-button__link):not(.button) {
+		text-decoration: underline;
+
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
+}
+
 
 /**
  * Forms

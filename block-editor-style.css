@@ -53,15 +53,26 @@
 	font-size: 0.889rem;
 }
 
-/* Links */
+/* Links - Content links must be underlined for accessibility */
 .editor-styles-wrapper a {
 	color: #0073aa;
+	text-decoration: underline;
+}
+
+.editor-styles-wrapper a:hover,
+.editor-styles-wrapper a:focus {
+	color: #333;
 	text-decoration: none;
 }
 
-.editor-styles-wrapper a:hover {
-	color: #333;
-	text-decoration: underline;
+/* Exclude buttons from underline */
+.editor-styles-wrapper a.wp-block-button__link {
+	text-decoration: none;
+}
+
+.editor-styles-wrapper a.wp-block-button__link:hover,
+.editor-styles-wrapper a.wp-block-button__link:focus {
+	text-decoration: none;
 }
 
 /* Lists */
