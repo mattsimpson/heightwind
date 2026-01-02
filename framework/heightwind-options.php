@@ -408,7 +408,6 @@ add_action( 'customize_controls_enqueue_scripts', 'heightwind_customize_controls
  * @since 2.1.0
  */
 function heightwind_color_scheme_css() {
-    // Get light scheme colors
     // Get light scheme colors with sanitization
     $light_bg      = sanitize_hex_color( get_theme_mod( 'heightwind_light_bg', '#f8f8f9' ) );
     $light_surface = sanitize_hex_color( get_theme_mod( 'heightwind_light_surface', '#ffffff' ) );
@@ -431,33 +430,33 @@ function heightwind_color_scheme_css() {
         /* Light Scheme - Customizer values override compiled defaults via cascade */
         :root,
         [data-color-scheme="light"] {
-            --hw-color-bg: <?php echo esc_attr( sanitize_hex_color( $light_bg ) ); ?>;
-            --hw-color-surface: <?php echo esc_attr( sanitize_hex_color( $light_surface ) ); ?>;
-            --hw-color-text: <?php echo esc_attr( sanitize_hex_color( $light_text ) ); ?>;
-            --hw-color-heading: <?php echo esc_attr( sanitize_hex_color( $light_heading ) ); ?>;
-            --hw-color-accent: <?php echo esc_attr( sanitize_hex_color( $light_accent ) ); ?>;
-            --hw-color-accent-hover: <?php echo esc_attr( sanitize_hex_color( $light_accent_hover ) ); ?>;
+            --hw-color-bg: <?php echo esc_attr( $light_bg ); ?>;
+            --hw-color-surface: <?php echo esc_attr( $light_surface ); ?>;
+            --hw-color-text: <?php echo esc_attr( $light_text ); ?>;
+            --hw-color-heading: <?php echo esc_attr( $light_heading ); ?>;
+            --hw-color-accent: <?php echo esc_attr( $light_accent ); ?>;
+            --hw-color-accent-hover: <?php echo esc_attr( $light_accent_hover ); ?>;
         }
 
         /* Dark Scheme */
         [data-color-scheme="dark"] {
-            --hw-color-bg: <?php echo esc_attr( sanitize_hex_color( $dark_bg ) ); ?>;
-            --hw-color-surface: <?php echo esc_attr( sanitize_hex_color( $dark_surface ) ); ?>;
-            --hw-color-text: <?php echo esc_attr( sanitize_hex_color( $dark_text ) ); ?>;
-            --hw-color-heading: <?php echo esc_attr( sanitize_hex_color( $dark_heading ) ); ?>;
-            --hw-color-accent: <?php echo esc_attr( sanitize_hex_color( $dark_accent ) ); ?>;
-            --hw-color-accent-hover: <?php echo esc_attr( sanitize_hex_color( $dark_accent_hover ) ); ?>;
+            --hw-color-bg: <?php echo esc_attr( $dark_bg ); ?>;
+            --hw-color-surface: <?php echo esc_attr( $dark_surface ); ?>;
+            --hw-color-text: <?php echo esc_attr( $dark_text ); ?>;
+            --hw-color-heading: <?php echo esc_attr( $dark_heading ); ?>;
+            --hw-color-accent: <?php echo esc_attr( $dark_accent ); ?>;
+            --hw-color-accent-hover: <?php echo esc_attr( $dark_accent_hover ); ?>;
         }
 
         /* Auto Scheme - Dark Mode */
         @media (prefers-color-scheme: dark) {
             [data-color-scheme="auto"] {
-                --hw-color-bg: <?php echo esc_attr( sanitize_hex_color( $dark_bg ) ); ?>;
-                --hw-color-surface: <?php echo esc_attr( sanitize_hex_color( $dark_surface ) ); ?>;
-                --hw-color-text: <?php echo esc_attr( sanitize_hex_color( $dark_text ) ); ?>;
-                --hw-color-heading: <?php echo esc_attr( sanitize_hex_color( $dark_heading ) ); ?>;
-                --hw-color-accent: <?php echo esc_attr( sanitize_hex_color( $dark_accent ) ); ?>;
-                --hw-color-accent-hover: <?php echo esc_attr( sanitize_hex_color( $dark_accent_hover ) ); ?>;
+                --hw-color-bg: <?php echo esc_attr( $dark_bg ); ?>;
+                --hw-color-surface: <?php echo esc_attr( $dark_surface ); ?>;
+                --hw-color-text: <?php echo esc_attr( $dark_text ); ?>;
+                --hw-color-heading: <?php echo esc_attr( $dark_heading ); ?>;
+                --hw-color-accent: <?php echo esc_attr( $dark_accent ); ?>;
+                --hw-color-accent-hover: <?php echo esc_attr( $dark_accent_hover ); ?>;
             }
         }
     </style>
