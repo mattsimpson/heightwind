@@ -421,36 +421,36 @@ function heightwind_color_scheme_css() {
     $dark_accent_hover  = heightwind_adjust_brightness( $dark_accent, 15 );
     ?>
     <style id="heightwind-color-scheme-css">
-        /* Light Scheme - uses !important to override compiled defaults */
+        /* Light Scheme - Customizer values override compiled defaults via cascade */
         :root,
         [data-color-scheme="light"] {
-            --hw-color-bg: <?php echo esc_attr( $light_bg ); ?> !important;
-            --hw-color-surface: <?php echo esc_attr( $light_surface ); ?> !important;
-            --hw-color-text: <?php echo esc_attr( $light_text ); ?> !important;
-            --hw-color-heading: <?php echo esc_attr( $light_heading ); ?> !important;
-            --hw-color-accent: <?php echo esc_attr( $light_accent ); ?> !important;
-            --hw-color-accent-hover: <?php echo esc_attr( $light_accent_hover ); ?> !important;
+            --hw-color-bg: <?php echo esc_attr( $light_bg ); ?>;
+            --hw-color-surface: <?php echo esc_attr( $light_surface ); ?>;
+            --hw-color-text: <?php echo esc_attr( $light_text ); ?>;
+            --hw-color-heading: <?php echo esc_attr( $light_heading ); ?>;
+            --hw-color-accent: <?php echo esc_attr( $light_accent ); ?>;
+            --hw-color-accent-hover: <?php echo esc_attr( $light_accent_hover ); ?>;
         }
 
         /* Dark Scheme */
         [data-color-scheme="dark"] {
-            --hw-color-bg: <?php echo esc_attr( $dark_bg ); ?> !important;
-            --hw-color-surface: <?php echo esc_attr( $dark_surface ); ?> !important;
-            --hw-color-text: <?php echo esc_attr( $dark_text ); ?> !important;
-            --hw-color-heading: <?php echo esc_attr( $dark_heading ); ?> !important;
-            --hw-color-accent: <?php echo esc_attr( $dark_accent ); ?> !important;
-            --hw-color-accent-hover: <?php echo esc_attr( $dark_accent_hover ); ?> !important;
+            --hw-color-bg: <?php echo esc_attr( $dark_bg ); ?>;
+            --hw-color-surface: <?php echo esc_attr( $dark_surface ); ?>;
+            --hw-color-text: <?php echo esc_attr( $dark_text ); ?>;
+            --hw-color-heading: <?php echo esc_attr( $dark_heading ); ?>;
+            --hw-color-accent: <?php echo esc_attr( $dark_accent ); ?>;
+            --hw-color-accent-hover: <?php echo esc_attr( $dark_accent_hover ); ?>;
         }
 
         /* Auto Scheme - Dark Mode */
         @media (prefers-color-scheme: dark) {
             [data-color-scheme="auto"] {
-                --hw-color-bg: <?php echo esc_attr( $dark_bg ); ?> !important;
-                --hw-color-surface: <?php echo esc_attr( $dark_surface ); ?> !important;
-                --hw-color-text: <?php echo esc_attr( $dark_text ); ?> !important;
-                --hw-color-heading: <?php echo esc_attr( $dark_heading ); ?> !important;
-                --hw-color-accent: <?php echo esc_attr( $dark_accent ); ?> !important;
-                --hw-color-accent-hover: <?php echo esc_attr( $dark_accent_hover ); ?> !important;
+                --hw-color-bg: <?php echo esc_attr( $dark_bg ); ?>;
+                --hw-color-surface: <?php echo esc_attr( $dark_surface ); ?>;
+                --hw-color-text: <?php echo esc_attr( $dark_text ); ?>;
+                --hw-color-heading: <?php echo esc_attr( $dark_heading ); ?>;
+                --hw-color-accent: <?php echo esc_attr( $dark_accent ); ?>;
+                --hw-color-accent-hover: <?php echo esc_attr( $dark_accent_hover ); ?>;
             }
         }
     </style>
