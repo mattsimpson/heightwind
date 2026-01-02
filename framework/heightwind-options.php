@@ -408,19 +408,19 @@ add_action( 'customize_controls_enqueue_scripts', 'heightwind_customize_controls
  * @since 2.1.0
  */
 function heightwind_color_scheme_css() {
-    // Get light scheme colors with sanitization
-    $light_bg      = sanitize_hex_color( get_theme_mod( 'heightwind_light_bg', '#f8f8f9' ) );
-    $light_surface = sanitize_hex_color( get_theme_mod( 'heightwind_light_surface', '#ffffff' ) );
-    $light_text    = sanitize_hex_color( get_theme_mod( 'heightwind_light_text', '#666A76' ) );
-    $light_heading = sanitize_hex_color( get_theme_mod( 'heightwind_light_heading', '#444854' ) );
-    $light_accent  = sanitize_hex_color( get_theme_mod( 'heightwind_light_accent', '#53a1b8' ) );
+    // Get light scheme colors with sanitization (use defaults if invalid)
+    $light_bg      = sanitize_hex_color( get_theme_mod( 'heightwind_light_bg', '#f8f8f9' ) ) ?: '#f8f8f9';
+    $light_surface = sanitize_hex_color( get_theme_mod( 'heightwind_light_surface', '#ffffff' ) ) ?: '#ffffff';
+    $light_text    = sanitize_hex_color( get_theme_mod( 'heightwind_light_text', '#666A76' ) ) ?: '#666A76';
+    $light_heading = sanitize_hex_color( get_theme_mod( 'heightwind_light_heading', '#444854' ) ) ?: '#444854';
+    $light_accent  = sanitize_hex_color( get_theme_mod( 'heightwind_light_accent', '#53a1b8' ) ) ?: '#53a1b8';
 
-    // Get dark scheme colors with sanitization
-    $dark_bg      = sanitize_hex_color( get_theme_mod( 'heightwind_dark_bg', '#1a1a2e' ) );
-    $dark_surface = sanitize_hex_color( get_theme_mod( 'heightwind_dark_surface', '#16213e' ) );
-    $dark_text    = sanitize_hex_color( get_theme_mod( 'heightwind_dark_text', '#e0e0e0' ) );
-    $dark_heading = sanitize_hex_color( get_theme_mod( 'heightwind_dark_heading', '#ffffff' ) );
-    $dark_accent  = sanitize_hex_color( get_theme_mod( 'heightwind_dark_accent', '#6bc5db' ) );
+    // Get dark scheme colors with sanitization (use defaults if invalid)
+    $dark_bg      = sanitize_hex_color( get_theme_mod( 'heightwind_dark_bg', '#1a1a2e' ) ) ?: '#1a1a2e';
+    $dark_surface = sanitize_hex_color( get_theme_mod( 'heightwind_dark_surface', '#16213e' ) ) ?: '#16213e';
+    $dark_text    = sanitize_hex_color( get_theme_mod( 'heightwind_dark_text', '#e0e0e0' ) ) ?: '#e0e0e0';
+    $dark_heading = sanitize_hex_color( get_theme_mod( 'heightwind_dark_heading', '#ffffff' ) ) ?: '#ffffff';
+    $dark_accent  = sanitize_hex_color( get_theme_mod( 'heightwind_dark_accent', '#6bc5db' ) ) ?: '#6bc5db';
 
     // Calculate accent hover colors (slightly lighter/darker)
     $light_accent_hover = heightwind_adjust_brightness( $light_accent, -15 );
@@ -474,6 +474,11 @@ add_action( 'wp_head', 'heightwind_color_scheme_css', 100 );
  * @return string Adjusted hex color
  */
 function heightwind_adjust_brightness( $hex, $steps ) {
+    // Handle null or empty input
+    if ( empty( $hex ) ) {
+        return '#000000';
+    }
+
     // Remove # if present
     $hex = ltrim( $hex, '#' );
 
