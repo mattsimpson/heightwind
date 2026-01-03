@@ -53,15 +53,26 @@
 	font-size: 0.889rem;
 }
 
-/* Links */
+/* Links - Content links must be underlined for accessibility */
 .editor-styles-wrapper a {
-	color: #0073aa;
+	color: var(--wp--preset--color--accent, #0073aa);
+	text-decoration: underline;
+}
+
+.editor-styles-wrapper a:hover,
+.editor-styles-wrapper a:focus {
+	color: #333;
 	text-decoration: none;
 }
 
-.editor-styles-wrapper a:hover {
-	color: #333;
-	text-decoration: underline;
+/* Exclude buttons from underline */
+.editor-styles-wrapper a.wp-block-button__link {
+	text-decoration: none;
+}
+
+.editor-styles-wrapper a.wp-block-button__link:hover,
+.editor-styles-wrapper a.wp-block-button__link:focus {
+	text-decoration: none;
 }
 
 /* Lists */
@@ -77,15 +88,70 @@
 
 /* Blockquotes */
 .editor-styles-wrapper blockquote {
-	margin: 1.5rem 0;
-	padding: 1rem 1.5rem;
-	border-left: 4px solid #0073aa;
-	font-style: italic;
-	background: #f7f7f7;
+	margin: 0 0 1.777em 0;
+	padding-left: 1.777em;
+	border-left: none;
+	background: transparent;
+	opacity: 0.8;
+	position: relative;
+}
+
+.editor-styles-wrapper blockquote::before {
+	content: "\201C";
+	text-indent: -0.563em;
+	float: left;
+	font-size: 3.157em;
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: 900;
+	line-height: 1;
+	font-style: normal;
 }
 
 .editor-styles-wrapper blockquote p:last-child {
 	margin-bottom: 0;
+}
+
+.editor-styles-wrapper blockquote cite {
+	text-transform: uppercase;
+	font-style: normal;
+	letter-spacing: 1px;
+	font-size: 0.844em;
+	display: block;
+}
+
+/* WordPress Block Quote */
+.editor-styles-wrapper .wp-block-quote {
+	border-left: 0 !important;
+	padding-left: 1.777em !important;
+	opacity: 0.8;
+}
+
+.editor-styles-wrapper .wp-block-quote::before {
+	content: "\201C";
+	text-indent: -0.563em;
+	float: left;
+	font-size: 3.157em;
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: 900;
+	line-height: 1;
+	font-style: normal;
+}
+
+.editor-styles-wrapper .wp-block-quote p {
+	margin-bottom: 0;
+}
+
+.editor-styles-wrapper .wp-block-quote cite {
+	text-transform: uppercase;
+	font-style: normal;
+	letter-spacing: 1px;
+	font-size: 0.844em;
+	display: block;
+}
+
+.editor-styles-wrapper .wp-block-quote p + p cite,
+.editor-styles-wrapper .wp-block-quote p + cite {
+	margin-top: -1.777em;
 }
 
 /* Code */
@@ -252,4 +318,49 @@
 		transition-duration: 0.01ms !important;
 		scroll-behavior: auto !important;
 	}
+}
+
+/* Block Styles - @since 2.1.0 */
+
+/* Button: Outline style */
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link {
+	background-color: transparent;
+	border: 2px solid currentColor;
+	color: #0073aa;
+}
+.editor-styles-wrapper .wp-block-button.is-style-outline .wp-block-button__link:hover {
+	background-color: #0073aa;
+	color: #fff;
+}
+
+/* Image: Rounded style */
+.editor-styles-wrapper .wp-block-image.is-style-rounded img {
+	border-radius: 0.5rem;
+}
+
+/* Image: Shadow style */
+.editor-styles-wrapper .wp-block-image.is-style-shadow img {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Quote: Large style */
+.editor-styles-wrapper .wp-block-quote.is-style-large {
+	font-size: 1.5em;
+}
+
+.editor-styles-wrapper .wp-block-quote.is-style-large::before {
+	font-size: 4em;
+}
+
+/* Separator: Thick style */
+.editor-styles-wrapper .wp-block-separator.is-style-thick {
+	border-bottom-width: 4px;
+}
+
+/* Group: Card style */
+.editor-styles-wrapper .wp-block-group.is-style-card {
+	background-color: #f7f7f7;
+	padding: 1.5rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }

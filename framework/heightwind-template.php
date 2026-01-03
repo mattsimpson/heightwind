@@ -43,10 +43,49 @@ if ( ! function_exists( 'heightwind_navigation_toggle' ) ) {
 
 
 /**
+ * Color Scheme Toggle
+ * Displays light/dark toggle with icon highlight style
+ * @since 2.1.0
+ * Hooked into heightwind_navigation_top()
+ */
+if ( ! function_exists( 'heightwind_color_scheme_toggle' ) ) {
+	function heightwind_color_scheme_toggle() {
+		// Don't show toggle if dark mode is disabled
+		if ( ! get_theme_mod( 'heightwind_dark_mode_enabled', true ) ) {
+			return;
+		}
+		?>
+		<div class="color-scheme-toggle" role="radiogroup" aria-label="<?php esc_attr_e( 'Color scheme', 'heightwind' ); ?>">
+			<button type="button" class="toggle-light" aria-label="<?php esc_attr_e( 'Light mode', 'heightwind' ); ?>" aria-pressed="true">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+					<circle cx="12" cy="12" r="5" fill="currentColor"/>
+					<line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</button>
+			<button type="button" class="toggle-dark" aria-label="<?php esc_attr_e( 'Dark mode', 'heightwind' ); ?>" aria-pressed="false">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
+				</svg>
+			</button>
+		</div>
+		<?php
+	}
+}
+
+
+/**
  * Site title
- * Displays the gravatar, site title and description
+ * Displays the custom logo (or gravatar fallback), site title and description
  * Hooked into heightwind_header()
  * @since 2.0.0
+ * @since 2.1.0 - Added custom logo support
  */
 if ( ! function_exists( 'heightwind_site_title' ) ) {
 	function heightwind_site_title() {
@@ -54,8 +93,16 @@ if ( ! function_exists( 'heightwind_site_title' ) ) {
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home" class="site-intro">
 				<?php
 					do_action( 'heightwind_site_title_link' );
-					if ( apply_filters( 'heightwind_header_gravatar', true ) ) {
-						echo get_avatar( apply_filters( 'heightwind_header_gravatar_email', $email = esc_attr( get_option( 'admin_email' ) ) ), 256, '', esc_attr( get_bloginfo( 'name' ) ) );
+
+					// Display custom logo if set, otherwise fall back to gravatar
+					if ( has_custom_logo() ) {
+						$custom_logo_id = get_theme_mod( 'custom_logo' );
+						echo wp_get_attachment_image( $custom_logo_id, 'full', false, array(
+							'class' => 'custom-logo',
+							'alt'   => get_bloginfo( 'name' ),
+						) );
+					} elseif ( apply_filters( 'heightwind_header_gravatar', true ) ) {
+						echo get_avatar( apply_filters( 'heightwind_header_gravatar_email', esc_attr( get_option( 'admin_email' ) ) ), 256, '', esc_attr( get_bloginfo( 'name' ) ) );
 					}
 				?>
 				<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>

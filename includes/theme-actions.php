@@ -19,9 +19,10 @@ add_action( 'heightwind_body_top',            	'heightwind_skip_to_content', 1 )
 /**
  * Header
  */
-add_action( 'heightwind_header',                	'heightwind_navigation_toggle', 10 );     			// Site title
+add_action( 'heightwind_header',                	'heightwind_navigation_toggle', 10 );     			// Navigation toggle (mobile)
 add_action( 'heightwind_header',                	'heightwind_site_title', 20 );          				// Site title
 add_action( 'heightwind_header',                	'heightwind_main_navigation', 30 );     				// Navigation
+add_action( 'heightwind_navigation_top',        	'heightwind_color_scheme_toggle', 10 );   			// Color scheme toggle (in nav bar)
 
 
 /**
@@ -54,6 +55,5 @@ add_action( 'comment_form_top',             	'heightwind_move_textarea' );			 		
  * Options
  */
 add_action( 'customize_register',   			array( 'HeightWindOptions' , 'heightwind_register' ) );	// Register the options
-add_action( 'wp_head',              			array( 'HeightWindOptions' , 'heightwind_render' ) );	// Output the CSS
 add_action( 'after_setup_theme',    			'heightwind_custom_background' );						// Custom Background
 add_filter( 'body_class',           			'heightwind_layout_classes' );						// Layout classes based on options

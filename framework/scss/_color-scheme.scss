@@ -1,0 +1,149 @@
+// ==========================================================================
+// Color Scheme
+// CSS Custom Properties for Light/Dark Theme Support
+// ==========================================================================
+
+// Light theme (default)
+:root,
+[data-color-scheme="light"] {
+    --hw-color-bg: #f8f8f9;
+    --hw-color-surface: #ffffff;
+    --hw-color-text: #666A76;
+    --hw-color-heading: #444854;
+    --hw-color-accent: #53a1b8;
+    --hw-color-accent-hover: #3d8aa3;
+    --hw-color-border: rgba(0, 0, 0, 0.1);
+    --hw-color-shadow: rgba(0, 0, 0, 0.05);
+    --hw-color-input-bg: rgba(0, 0, 0, 0.05);
+    --hw-color-code-bg: rgba(0, 0, 0, 0.05);
+    --hw-color-code-text: #dc5494;
+
+    // Colors for elements on accent backgrounds
+    --hw-color-on-accent: #ffffff;
+
+    // Message/alert colors
+    --hw-color-info: #56acd3;
+    --hw-color-success: #8ada46;
+    --hw-color-warning: #eeb44c;
+    --hw-color-error: #e74c3c;
+}
+
+// Dark theme
+[data-color-scheme="dark"] {
+    --hw-color-bg: #1a1a2e;
+    --hw-color-surface: #16213e;
+    --hw-color-text: #e0e0e0;
+    --hw-color-heading: #ffffff;
+    --hw-color-accent: #6bc5db;
+    --hw-color-accent-hover: #8fd4e6;
+    --hw-color-border: rgba(255, 255, 255, 0.1);
+    --hw-color-shadow: rgba(0, 0, 0, 0.3);
+    --hw-color-input-bg: rgba(255, 255, 255, 0.1);
+    --hw-color-code-bg: rgba(255, 255, 255, 0.1);
+    --hw-color-code-text: #f0a8c9;
+
+    // Colors for elements on accent backgrounds
+    --hw-color-on-accent: #1a1a2e;
+
+    // Message/alert colors (adjusted for dark mode)
+    --hw-color-info: #7cc4e6;
+    --hw-color-success: #a8e87a;
+    --hw-color-warning: #f5c87a;
+    --hw-color-error: #ff6b6b;
+}
+
+// Auto mode - follows system preference via prefers-color-scheme
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] {
+        --hw-color-bg: #1a1a2e;
+        --hw-color-surface: #16213e;
+        --hw-color-text: #e0e0e0;
+        --hw-color-heading: #ffffff;
+        --hw-color-accent: #6bc5db;
+        --hw-color-accent-hover: #8fd4e6;
+        --hw-color-border: rgba(255, 255, 255, 0.1);
+        --hw-color-shadow: rgba(0, 0, 0, 0.3);
+        --hw-color-input-bg: rgba(255, 255, 255, 0.1);
+        --hw-color-code-bg: rgba(255, 255, 255, 0.1);
+        --hw-color-code-text: #f0a8c9;
+        --hw-color-on-accent: #1a1a2e;
+        --hw-color-info: #7cc4e6;
+        --hw-color-success: #a8e87a;
+        --hw-color-warning: #f5c87a;
+        --hw-color-error: #ff6b6b;
+    }
+}
+
+// ==========================================================================
+// Color Scheme Toggle - Segmented Switch Style
+// ==========================================================================
+
+.color-scheme-toggle {
+    display: flex;
+    align-items: center;
+    padding: 0.2em;
+    background: var(--hw-color-input-bg);
+    border: none;
+    border-radius: 6px;
+
+    // Individual toggle buttons
+    .toggle-light,
+    .toggle-dark {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.4em 0.5em;
+        background: transparent;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        color: var(--hw-color-text);
+        opacity: 0.5;
+        transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &:focus {
+            outline: 2px solid var(--hw-color-accent);
+            outline-offset: 1px;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+        }
+
+        // Active state - background highlight
+        &[aria-pressed="true"] {
+            opacity: 1;
+            background: var(--hw-color-surface);
+            color: var(--hw-color-accent);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+// Position toggle in navigation bar
+.main-nav .color-scheme-toggle {
+    // Mobile: show in nav panel
+    margin: 0.75em 1.125em;
+}
+
+// Desktop navigation - position toggle on far right
+@media only screen and (min-width: 769px) {
+    .main-nav {
+        position: relative;
+
+        .color-scheme-toggle {
+            position: absolute;
+            right: 1em;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0;
+            z-index: 10;
+        }
+    }
+}

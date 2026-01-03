@@ -16,7 +16,7 @@ const { execSync } = require('child_process');
 
 // Configuration
 const THEME_NAME = 'heightwind';
-const THEME_VERSION = '2.0.0';
+const THEME_VERSION = '2.1.0';
 const ROOT_DIR = path.resolve(__dirname, '..');
 const DIST_DIR = path.join(ROOT_DIR, 'dist');
 const THEME_DIR = path.join(DIST_DIR, THEME_NAME);
